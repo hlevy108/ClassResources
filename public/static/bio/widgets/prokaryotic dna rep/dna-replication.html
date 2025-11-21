@@ -6,76 +6,424 @@
     <title>DNA Replication (Prokaryotic) – Step-by-Step</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="replication.css" />
   </head>
   <body>
     <main id="replication-demo" class="page">
       <div class="container container--narrow">
         <h1 class="h1">Prokaryotic DNA Replication</h1>
-        <p class="lead">Try to click the enzymes in the correct order, and learn the prokaryotic DNA replication process! (Refer to glossary below for enzyme explanations.)</p>
+        <p class="lead">
+          Try to click the enzymes in the correct order, and learn the
+          prokaryotic DNA replication process! (Refer to glossary below for
+          enzyme explanations.)
+        </p>
         <div class="panel stage">
-          <svg id="replication-svg" viewBox="0 0 1200 600" role="img" aria-label="DNA double helix visualization">
-            <desc>Static depiction of a double helix along the x-axis (no replication bubble)</desc>
+          <svg
+            id="replication-svg"
+            viewBox="0 0 1200 600"
+            role="img"
+            aria-label="DNA double helix visualization"
+          >
+            <desc>
+              Static depiction of a double helix along the x-axis (no
+              replication bubble)
+            </desc>
             <g id="double-helix"></g>
           </svg>
         </div>
         <div class="panel controls" aria-label="Replication controls">
-          <button id="helicase-start" type="button" class="primary">Helicase + Topoisomerase</button>
-          <button id="primase-start" type="button" class="primary" aria-label="Lay down RNA primers (Primase)">Primase</button>
+          <button id="helicase-start" type="button" class="primary">
+            Helicase + Topoisomerase
+          </button>
+          <button
+            id="primase-start"
+            type="button"
+            class="primary"
+            aria-label="Lay down RNA primers (Primase)"
+          >
+            Primase
+          </button>
           <span id="helicase-status" aria-hidden="true"></span>
           <span id="primase-status" aria-hidden="true"></span>
-          <button id="pol3-start" type="button" class="primary">DNA Polymerase III</button>
-          <button id="pol1-start" type="button" class="primary" aria-label="Replace RNA primers with DNA (DNA Pol I)">DNA Polymerase I</button>
-          <button id="ligase-start" type="button" class="primary">DNA Ligase</button>
-          <span id="order-notice" role="alert" aria-live="polite" class="alert warning" style="display:none"></span>
-          <button id="helicase-reset" type="button" class="outline" style="display:none">Reset</button>
+          <button id="pol3-start" type="button" class="primary">
+            DNA Polymerase III
+          </button>
+          <button
+            id="pol1-start"
+            type="button"
+            class="primary"
+            aria-label="Replace RNA primers with DNA (DNA Pol I)"
+          >
+            DNA Polymerase I
+          </button>
+          <button id="ligase-start" type="button" class="primary">
+            DNA Ligase
+          </button>
+          <span
+            id="order-notice"
+            role="alert"
+            aria-live="polite"
+            class="alert warning"
+            style="display: none"
+          ></span>
+          <button
+            id="helicase-reset"
+            type="button"
+            class="outline"
+            style="display: none"
+          >
+            Reset
+          </button>
+          <button
+            id="complete-replication"
+            type="button"
+            class="primary"
+            style="display: none"
+          >
+            Complete Replication
+          </button>
         </div>
       </div>
     </main>
-    <section id="replication-glossary" class="glossary" aria-labelledby="replication-glossary-title">
-      <h3 id="replication-glossary-title" class="glossary-title">Enzyme Glossary</h3>
+    <section
+      id="replication-legend"
+      class="legend-section"
+      aria-labelledby="replication-legend-title"
+    >
+      <h3 id="replication-legend-title" class="legend-title">Enzyme Legend</h3>
+      <p class="legend-subtitle">
+        Click the enzymes in order to learn the replication process:
+      </p>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <polygon
+                points="20,10 10,30 30,30"
+                fill="#0ea5e9"
+                stroke="#0c4a6e"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">1</span>
+            <a href="#replication-glossary" class="legend-link">DNA Helicase</a>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <rect
+                x="16"
+                y="5"
+                width="8"
+                height="30"
+                rx="3"
+                fill="#ec4899"
+                stroke="#be185d"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">1</span>
+            <a href="#replication-glossary" class="legend-link"
+              >Topoisomerase</a
+            >
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <ellipse
+                cx="20"
+                cy="20"
+                rx="14"
+                ry="10"
+                fill="#06b6d4"
+                stroke="#0891b2"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">2</span>
+            <a href="#replication-glossary" class="legend-link">Primase</a>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <circle
+                cx="20"
+                cy="20"
+                r="12"
+                fill="#8b5cf6"
+                stroke="#6d28d9"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">3</span>
+            <a href="#replication-glossary" class="legend-link"
+              >DNA Polymerase III</a
+            >
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <circle
+                cx="20"
+                cy="20"
+                r="12"
+                fill="#3b82f6"
+                stroke="#1d4ed8"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">4</span>
+            <a href="#replication-glossary" class="legend-link"
+              >DNA Polymerase I</a
+            >
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-visual">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="legend-svg">
+              <circle
+                cx="20"
+                cy="20"
+                r="12"
+                fill="#f59e0b"
+                stroke="#b45309"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div class="legend-text">
+            <span class="legend-step">5</span>
+            <a href="#replication-glossary" class="legend-link">DNA Ligase</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="visual-elements-legend"
+      class="visual-legend-section"
+      aria-labelledby="visual-legend-title"
+    >
+      <button
+        id="visual-legend-toggle"
+        type="button"
+        class="legend-toggle"
+        aria-expanded="false"
+        aria-controls="visual-legend-content"
+      >
+        <span class="legend-toggle-text">Visual Elements Legend</span>
+        <span class="legend-toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div
+        id="visual-legend-content"
+        class="visual-legend-content"
+        aria-labelledby="visual-legend-title"
+        style="display: none"
+      >
+        <p class="visual-legend-subtitle">
+          Visual elements that appear during replication:
+        </p>
+        <div class="visual-legend-items">
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <rect x="5" y="6" width="20" height="8" rx="2" fill="#f59e0b" />
+              </svg>
+            </div>
+            <span class="visual-legend-label">RNA Primer (Leading)</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <rect x="5" y="6" width="20" height="8" rx="2" fill="#f97316" />
+              </svg>
+            </div>
+            <span class="visual-legend-label">RNA Primer (Lagging)</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <path
+                  d="M 5 10 L 25 10"
+                  stroke="#10b981"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <span class="visual-legend-label">Synthesized DNA</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <path
+                  d="M 5 10 Q 15 5 25 10"
+                  fill="none"
+                  stroke="#f0b323"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <span class="visual-legend-label">Template Strand (Yellow)</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <path
+                  d="M 5 10 Q 15 15 25 10"
+                  fill="none"
+                  stroke="#d32f2f"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <span class="visual-legend-label">Template Strand (Red)</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <line
+                  x1="15"
+                  y1="5"
+                  x2="15"
+                  y2="15"
+                  stroke="#64748b"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <span class="visual-legend-label">Base Pair</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <path
+                  d="M 5 10 L 25 10"
+                  stroke="#10b981"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-dasharray="2,2"
+                />
+              </svg>
+            </div>
+            <span class="visual-legend-label">Ligase Weld</span>
+          </div>
+          <div class="visual-legend-item">
+            <div class="visual-legend-swatch">
+              <svg width="30" height="20" viewBox="0 0 30 20">
+                <text
+                  x="10"
+                  y="14"
+                  font-size="10"
+                  fill="#475569"
+                  font-weight="600"
+                >
+                  3'
+                </text>
+              </svg>
+            </div>
+            <span class="visual-legend-label">3'/5' Labels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      id="replication-glossary"
+      class="glossary"
+      aria-labelledby="replication-glossary-title"
+    >
+      <h3 id="replication-glossary-title" class="glossary-title">
+        Enzyme Glossary
+      </h3>
       <dl>
         <dt>DNA Helicase</dt>
         <dd>Unwinds the double helix and creates the replication fork.</dd>
 
         <dt>DNA Ligase</dt>
-        <dd>Seals gaps between DNA fragments by forming phosphodiester bonds.</dd>
+        <dd>
+          Seals gaps between DNA fragments by forming phosphodiester bonds.
+        </dd>
 
         <dt>DNA Polymerase I</dt>
-        <dd>Removes RNA primers and fills the newly created gaps by building new DNA.</dd>
+        <dd>
+          Removes RNA primers and fills the newly created gaps by building new
+          DNA.
+        </dd>
 
         <dt>DNA Polymerase III</dt>
-        <dd>Builds most of the new DNA by adding complementary nucleotides to the template strand.</dd>
+        <dd>
+          Builds most of the new DNA by adding complementary nucleotides to the
+          template strand.
+        </dd>
 
         <dt>Primase</dt>
         <dd>Synthesizes short RNA primers to initiate DNA synthesis.</dd>
 
         <dt>Topoisomerase (DNA gyrase)</dt>
-        <dd>Prevents early supercoiling (DNA folding in on itself) ahead of the replication fork.</dd>
+        <dd>
+          Prevents early supercoiling (DNA folding in on itself) ahead of the
+          replication fork.
+        </dd>
       </dl>
     </section>
     <script>
-      (function() {
-        const svg = document.getElementById('replication-svg');
-        const g = document.getElementById('double-helix');
+      (function () {
+        // Visual legend dropdown toggle
+        const visualLegendToggle = document.getElementById(
+          "visual-legend-toggle"
+        );
+        const visualLegendContent = document.getElementById(
+          "visual-legend-content"
+        );
+        if (visualLegendToggle && visualLegendContent) {
+          visualLegendToggle.addEventListener("click", () => {
+            const isExpanded =
+              visualLegendToggle.getAttribute("aria-expanded") === "true";
+            visualLegendToggle.setAttribute(
+              "aria-expanded",
+              String(!isExpanded)
+            );
+            visualLegendContent.style.display = isExpanded ? "none" : "block";
+          });
+        }
+
+        const svg = document.getElementById("replication-svg");
+        const g = document.getElementById("double-helix");
         if (!svg || !g) return;
 
-        const NS = 'http://www.w3.org/2000/svg';
-        const startX = 80;           // left margin
-        const endX = 1120;           // right margin
-        const centerY = 300;         // axis along x
-        const amplitude = 80;        // helical radius (vertical)
-        const wavelength = 200;      // length of one turn (px)
-        const step = 8;              // sampling resolution (px)
-        const basePairEvery = 20;    // spacing between base pairs (px)
+        const NS = "http://www.w3.org/2000/svg";
+        const startX = 80; // left margin
+        const endX = 1120; // right margin
+        const centerY = 300; // axis along x
+        const amplitude = 80; // helical radius (vertical)
+        const wavelength = 200; // length of one turn (px)
+        const step = 8; // sampling resolution (px)
+        const basePairEvery = 20; // spacing between base pairs (px)
 
         // Helicase animation settings
         const helicaseStartX = startX; // begin at the left edge of the helix
         const helicaseEndX = 1000;
-        const helicaseSpeed = 220;   // px per second
-        const maxForkSpread = 140;   // maximum additional separation of single strands
-        const spreadScale = 140;     // controls how quickly fork opens
+        const helicaseSpeed = 220; // px per second
+        const maxForkSpread = 140; // maximum additional separation of single strands
+        const spreadScale = 140; // controls how quickly fork opens
 
         // Primase/primer visualization settings (compressed for clarity)
         const okazakiSpacingPx = 200;
@@ -84,48 +432,48 @@
         const primerBlockHeight = 12;
 
         // Elements
-        const basepairsGroup = document.createElementNS(NS, 'g');
-        basepairsGroup.setAttribute('class', 'basepairs');
-        const backboneAPath = document.createElementNS(NS, 'path');
-        backboneAPath.setAttribute('class', 'backbone backbone-a');
-        const backboneBPath = document.createElementNS(NS, 'path');
-        backboneBPath.setAttribute('class', 'backbone backbone-b');
-        const templateAPath = document.createElementNS(NS, 'path');
-        templateAPath.setAttribute('class', 'template template-a');
-        const templateBPath = document.createElementNS(NS, 'path');
-        templateBPath.setAttribute('class', 'template template-b');
+        const basepairsGroup = document.createElementNS(NS, "g");
+        basepairsGroup.setAttribute("class", "basepairs");
+        const backboneAPath = document.createElementNS(NS, "path");
+        backboneAPath.setAttribute("class", "backbone backbone-a");
+        const backboneBPath = document.createElementNS(NS, "path");
+        backboneBPath.setAttribute("class", "backbone backbone-b");
+        const templateAPath = document.createElementNS(NS, "path");
+        templateAPath.setAttribute("class", "template template-a");
+        const templateBPath = document.createElementNS(NS, "path");
+        templateBPath.setAttribute("class", "template template-b");
         // Group for synthesized leading strand (DNA Pol III)
-        const pol3Group = document.createElementNS(NS, 'g');
-        pol3Group.setAttribute('id', 'pol3-leading');
+        const pol3Group = document.createElementNS(NS, "g");
+        pol3Group.setAttribute("id", "pol3-leading");
         // Group for synthesized lagging strand (Okazaki fragments)
-        const pol3LagGroup = document.createElementNS(NS, 'g');
-        pol3LagGroup.setAttribute('id', 'pol3-lagging');
+        const pol3LagGroup = document.createElementNS(NS, "g");
+        pol3LagGroup.setAttribute("id", "pol3-lagging");
         // Group for DNA Pol I (primer replacement)
-        const pol1Group = document.createElementNS(NS, 'g');
-        pol1Group.setAttribute('id', 'pol1');
+        const pol1Group = document.createElementNS(NS, "g");
+        pol1Group.setAttribute("id", "pol1");
         // Group for Ligase (enzyme + welds)
-        const ligaseGroup = document.createElementNS(NS, 'g');
-        ligaseGroup.setAttribute('id', 'ligase');
+        const ligaseGroup = document.createElementNS(NS, "g");
+        ligaseGroup.setAttribute("id", "ligase");
         // Small connector segments drawn at completion to join unwound strands
         // to the residual helical tail visually
-        const junctionTopPath = document.createElementNS(NS, 'path');
-        junctionTopPath.setAttribute('class', 'template template-a');
-        const junctionBottomPath = document.createElementNS(NS, 'path');
-        junctionBottomPath.setAttribute('class', 'template template-b');
+        const junctionTopPath = document.createElementNS(NS, "path");
+        junctionTopPath.setAttribute("class", "template template-a");
+        const junctionBottomPath = document.createElementNS(NS, "path");
+        junctionBottomPath.setAttribute("class", "template template-b");
 
         // Group for primers (RNA) and labels
-        const primersGroup = document.createElementNS(NS, 'g');
-        primersGroup.setAttribute('id', 'primers');
+        const primersGroup = document.createElementNS(NS, "g");
+        primersGroup.setAttribute("id", "primers");
 
-        const topLabel = document.createElementNS(NS, 'text');
-        topLabel.setAttribute('class', 'label prime');
+        const topLabel = document.createElementNS(NS, "text");
+        topLabel.setAttribute("class", "label prime");
         topLabel.textContent = "3'";
-        const bottomLabel = document.createElementNS(NS, 'text');
-        bottomLabel.setAttribute('class', 'label prime');
+        const bottomLabel = document.createElementNS(NS, "text");
+        bottomLabel.setAttribute("class", "label prime");
         bottomLabel.textContent = "5'";
 
-        const helicase = document.createElementNS(NS, 'polygon');
-        helicase.setAttribute('class', 'helicase');
+        const helicase = document.createElementNS(NS, "polygon");
+        helicase.setAttribute("class", "helicase");
         // Helicase triangle geometry (isosceles, pointing right)
         const helicaseLength = 32; // tip (front) to base distance
         const helicaseHeight = 32; // base height
@@ -133,40 +481,68 @@
           const xTip = forkX;
           const xBase = forkX - helicaseLength;
           const halfH = helicaseHeight / 2;
-          const points = `${xTip},${centerY} ${xBase},${centerY - halfH} ${xBase},${centerY + halfH}`;
-          helicase.setAttribute('points', points);
+          const points = `${xTip},${centerY} ${xBase},${
+            centerY - halfH
+          } ${xBase},${centerY + halfH}`;
+          helicase.setAttribute("points", points);
         }
         setHelicasePoints(helicaseStartX);
 
         // Topoisomerase (vertical bar) ahead of helicase, centered on DNA band
-        const topo = document.createElementNS(NS, 'rect');
-        topo.setAttribute('class', 'topoisomerase');
+        const topo = document.createElementNS(NS, "rect");
+        topo.setAttribute("class", "topoisomerase");
         const topoLeadPx = 28; // distance ahead of helicase along x
         const topoBarWidth = 8;
-        const topoBarHeight = (amplitude * 2) + 20; // span both strands with margin
-        topo.setAttribute('width', String(topoBarWidth));
-        topo.setAttribute('height', String(topoBarHeight));
-        topo.setAttribute('rx', '3');
+        const topoBarHeight = amplitude * 2 + 20; // span both strands with margin
+        topo.setAttribute("width", String(topoBarWidth));
+        topo.setAttribute("height", String(topoBarHeight));
+        topo.setAttribute("rx", "3");
         function setTopoisomerasePosition(forkX) {
           const xAhead = Math.min(helicaseEndX, forkX + topoLeadPx);
           // Center the bar vertically over the DNA region
-          const xLeft = xAhead - (topoBarWidth / 2);
-          const yTop = centerY - (topoBarHeight / 2);
-          topo.setAttribute('x', String(xLeft));
-          topo.setAttribute('y', String(yTop));
+          const xLeft = xAhead - topoBarWidth / 2;
+          const yTop = centerY - topoBarHeight / 2;
+          topo.setAttribute("x", String(xLeft));
+          topo.setAttribute("y", String(yTop));
         }
 
         // Build initial basepairs and store x on elements
+        // Create clipPath to constrain base pairs within helix bounds
+        let defs = svg.querySelector("defs");
+        if (!defs) {
+          defs = document.createElementNS(NS, "defs");
+          svg.insertBefore(defs, svg.firstChild);
+        }
+        const clipPath = document.createElementNS(NS, "clipPath");
+        clipPath.setAttribute("id", "helix-clip");
+        const clipRect = document.createElementNS(NS, "rect");
+        clipRect.setAttribute("x", String(startX - 10));
+        clipRect.setAttribute("y", String(centerY - amplitude - 10));
+        clipRect.setAttribute("width", String(endX - startX + 20));
+        clipRect.setAttribute("height", String(amplitude * 2 + 20));
+        clipPath.appendChild(clipRect);
+        defs.appendChild(clipPath);
+        basepairsGroup.setAttribute("clip-path", "url(#helix-clip)");
+
         for (let x = startX; x <= endX; x += basePairEvery) {
           const phase = (2 * Math.PI * (x - startX)) / wavelength;
           const yA = centerY + amplitude * Math.sin(phase);
           const yB = centerY + amplitude * Math.sin(phase + Math.PI);
-          const tilt = 8 * Math.cos(phase);
-          const ln = document.createElementNS(NS, 'line');
-          ln.setAttribute('x1', x);
-          ln.setAttribute('y1', yA - tilt);
-          ln.setAttribute('x2', x);
-          ln.setAttribute('y2', yB + tilt);
+          const tilt = 6 * Math.cos(phase); // Reduced from 8 to 6 to minimize protrusion
+          const ln = document.createElementNS(NS, "line");
+          ln.setAttribute("x1", x);
+          // Constrain endpoints to stay within helix amplitude bounds
+          const y1Constrained = Math.max(
+            centerY - amplitude - 2,
+            Math.min(centerY + amplitude + 2, yA - tilt)
+          );
+          const y2Constrained = Math.max(
+            centerY - amplitude - 2,
+            Math.min(centerY + amplitude + 2, yB + tilt)
+          );
+          ln.setAttribute("y1", y1Constrained);
+          ln.setAttribute("x2", x);
+          ln.setAttribute("y2", y2Constrained);
           ln.dataset.x = String(x);
           basepairsGroup.appendChild(ln);
         }
@@ -180,10 +556,10 @@
         }
 
         function buildPaths(forkX) {
-          let dBackA = '';
-          let dBackB = '';
-          let dTempA = '';
-          let dTempB = '';
+          let dBackA = "";
+          let dBackB = "";
+          let dTempA = "";
+          let dTempB = "";
           let startedBackA = false;
           let startedBackB = false;
           let startedTempA = false;
@@ -199,16 +575,32 @@
               const off = forkOffsetLeft(x, forkX);
               const yTop = centerY - off;
               const yBottom = centerY + off;
-              if (!startedTempA) { dTempA += 'M ' + x + ' ' + yTop; startedTempA = true; }
-              else { dTempA += ' L ' + x + ' ' + yTop; }
-              if (!startedTempB) { dTempB += 'M ' + x + ' ' + yBottom; startedTempB = true; }
-              else { dTempB += ' L ' + x + ' ' + yBottom; }
+              if (!startedTempA) {
+                dTempA += "M " + x + " " + yTop;
+                startedTempA = true;
+              } else {
+                dTempA += " L " + x + " " + yTop;
+              }
+              if (!startedTempB) {
+                dTempB += "M " + x + " " + yBottom;
+                startedTempB = true;
+              } else {
+                dTempB += " L " + x + " " + yBottom;
+              }
             } else {
               // Ahead of helicase: intact double helix
-              if (!startedBackA) { dBackA += 'M ' + x + ' ' + yHelixA; startedBackA = true; }
-              else { dBackA += ' L ' + x + ' ' + yHelixA; }
-              if (!startedBackB) { dBackB += 'M ' + x + ' ' + yHelixB; startedBackB = true; }
-              else { dBackB += ' L ' + x + ' ' + yHelixB; }
+              if (!startedBackA) {
+                dBackA += "M " + x + " " + yHelixA;
+                startedBackA = true;
+              } else {
+                dBackA += " L " + x + " " + yHelixA;
+              }
+              if (!startedBackB) {
+                dBackB += "M " + x + " " + yHelixB;
+                startedBackB = true;
+              } else {
+                dBackB += " L " + x + " " + yHelixB;
+              }
             }
           }
 
@@ -219,65 +611,80 @@
           const lines = basepairsGroup.children;
           for (let i = 0; i < lines.length; i++) {
             const ln = lines[i];
-            const x = Number(ln.dataset.x || '0');
+            const x = Number(ln.dataset.x || "0");
             // Show base pairs only ahead of helicase; hide at/behind fork
-            ln.style.display = x > forkX ? '' : 'none';
+            ln.style.display = x > forkX ? "" : "none";
           }
         }
 
         function makePrimer(x, y, isLeading) {
-          const ln = document.createElementNS(NS, 'line');
+          const ln = document.createElementNS(NS, "line");
           const half = primerLengthPx / 2;
-          ln.setAttribute('x1', String(x - half));
-          ln.setAttribute('y1', String(y));
-          ln.setAttribute('x2', String(x + half));
-          ln.setAttribute('y2', String(y));
-          ln.setAttribute('class', 'primer ' + (isLeading ? 'primer-leading' : 'primer-lagging'));
+          ln.setAttribute("x1", String(x - half));
+          ln.setAttribute("y1", String(y));
+          ln.setAttribute("x2", String(x + half));
+          ln.setAttribute("y2", String(y));
+          ln.setAttribute(
+            "class",
+            "primer " + (isLeading ? "primer-leading" : "primer-lagging")
+          );
           primersGroup.appendChild(ln);
           return ln;
         }
 
         function makePrimerRect(xCenter, yCenter, isLeading) {
-          const rect = document.createElementNS(NS, 'rect');
+          const rect = document.createElementNS(NS, "rect");
           const w = primerBlockWidth;
           const h = primerBlockHeight;
-          rect.setAttribute('x', String(xCenter - w / 2));
-          rect.setAttribute('y', String(yCenter - h / 2));
-          rect.setAttribute('width', String(w));
-          rect.setAttribute('height', String(h));
-          rect.setAttribute('rx', '3');
-          rect.setAttribute('class', 'primer-block ' + (isLeading ? 'primer-block-leading' : 'primer-block-lagging'));
+          rect.setAttribute("x", String(xCenter - w / 2));
+          rect.setAttribute("y", String(yCenter - h / 2));
+          rect.setAttribute("width", String(w));
+          rect.setAttribute("height", String(h));
+          rect.setAttribute("rx", "3");
+          rect.setAttribute(
+            "class",
+            "primer-block " +
+              (isLeading ? "primer-block-leading" : "primer-block-lagging")
+          );
           primersGroup.appendChild(rect);
           return rect;
         }
 
         // Primase enzyme visualization (cyan oval)
-        const primase = document.createElementNS(NS, 'ellipse');
-        primase.setAttribute('class', 'primase');
+        const primase = document.createElementNS(NS, "ellipse");
+        primase.setAttribute("class", "primase");
         const primaseRx = 14;
         const primaseRy = 10;
         function setPrimasePosition(xCenter, yCenter) {
-          primase.setAttribute('cx', String(xCenter));
-          primase.setAttribute('cy', String(yCenter));
-          primase.setAttribute('rx', String(primaseRx));
-          primase.setAttribute('ry', String(primaseRy));
+          primase.setAttribute("cx", String(xCenter));
+          primase.setAttribute("cy", String(yCenter));
+          primase.setAttribute("rx", String(primaseRx));
+          primase.setAttribute("ry", String(primaseRy));
         }
         // Primase travel animation helpers (to avoid teleporting between sites)
         const primaseSpeed = 380; // px per second
         function getPrimaseXY() {
-          const cxAttr = primase.getAttribute('cx');
-          const cyAttr = primase.getAttribute('cy');
+          const cxAttr = primase.getAttribute("cx");
+          const cyAttr = primase.getAttribute("cy");
           const cx = cxAttr == null ? NaN : parseFloat(cxAttr);
           const cy = cyAttr == null ? NaN : parseFloat(cyAttr);
-          return { x: cx, y: cy, hasPos: Number.isFinite(cx) && Number.isFinite(cy) };
+          return {
+            x: cx,
+            y: cy,
+            hasPos: Number.isFinite(cx) && Number.isFinite(cy),
+          };
         }
         function travelPrimaseTo(xTarget, yTarget, durationMs, onDone) {
           const { x: xStart, y: yStart } = getPrimaseXY();
           const t0 = performance.now();
           function step(now) {
             const t = Math.min(1, (now - t0) / durationMs);
-            const x = (Number.isFinite(xStart) ? xStart : xTarget) + ((xTarget - (Number.isFinite(xStart) ? xStart : xTarget)) * t);
-            const y = (Number.isFinite(yStart) ? yStart : yTarget) + ((yTarget - (Number.isFinite(yStart) ? yStart : yTarget)) * t);
+            const x =
+              (Number.isFinite(xStart) ? xStart : xTarget) +
+              (xTarget - (Number.isFinite(xStart) ? xStart : xTarget)) * t;
+            const y =
+              (Number.isFinite(yStart) ? yStart : yTarget) +
+              (yTarget - (Number.isFinite(yStart) ? yStart : yTarget)) * t;
             setPrimasePosition(x, y);
             if (t < 1) {
               requestAnimationFrame(step);
@@ -290,19 +697,19 @@
 
         function render(forkX) {
           const { dBackA, dBackB, dTempA, dTempB } = buildPaths(forkX);
-          backboneAPath.setAttribute('d', dBackA || `M ${startX} ${centerY}`);
-          backboneBPath.setAttribute('d', dBackB || `M ${startX} ${centerY}`);
-          templateAPath.setAttribute('d', dTempA || `M ${forkX} ${centerY}`);
-          templateBPath.setAttribute('d', dTempB || `M ${forkX} ${centerY}`);
+          backboneAPath.setAttribute("d", dBackA || `M ${startX} ${centerY}`);
+          backboneBPath.setAttribute("d", dBackB || `M ${startX} ${centerY}`);
+          templateAPath.setAttribute("d", dTempA || `M ${forkX} ${centerY}`);
+          templateBPath.setAttribute("d", dTempB || `M ${forkX} ${centerY}`);
           updateBasepairs(forkX);
 
           // Update 3'/5' labels at the LEFTMOST end of the open fork
           const xLeftEdge = startX;
           const offLeftEdge = forkOffsetLeft(xLeftEdge, forkX);
-          topLabel.setAttribute('x', String(xLeftEdge - 22));
-          topLabel.setAttribute('y', String(centerY - offLeftEdge - 6));
-          bottomLabel.setAttribute('x', String(xLeftEdge - 22));
-          bottomLabel.setAttribute('y', String(centerY + offLeftEdge + 14));
+          topLabel.setAttribute("x", String(xLeftEdge - 22));
+          topLabel.setAttribute("y", String(centerY - offLeftEdge - 6));
+          bottomLabel.setAttribute("x", String(xLeftEdge - 22));
+          bottomLabel.setAttribute("y", String(centerY + offLeftEdge + 14));
         }
 
         // Create smooth connectors that continue the helix into the unwound strands
@@ -342,10 +749,20 @@
           // Find join x for top by searching left from fork for closest intersection
           const searchWidth = 120;
           const dx = Math.max(2, Math.min(6, step));
-          let bestTopX = x1, bestTopErr = Infinity, prevX = x1, prevErr = yUnwoundTopAt(x1) - yHelixTopAt(x1);
-          for (let x = x1 - dx; x >= Math.max(startX, x1 - searchWidth); x -= dx) {
+          let bestTopX = x1,
+            bestTopErr = Infinity,
+            prevX = x1,
+            prevErr = yUnwoundTopAt(x1) - yHelixTopAt(x1);
+          for (
+            let x = x1 - dx;
+            x >= Math.max(startX, x1 - searchWidth);
+            x -= dx
+          ) {
             const err = yUnwoundTopAt(x) - yHelixTopAt(x);
-            if (Math.abs(err) < bestTopErr) { bestTopErr = Math.abs(err); bestTopX = x; }
+            if (Math.abs(err) < bestTopErr) {
+              bestTopErr = Math.abs(err);
+              bestTopX = x;
+            }
             // sign change -> interpolate a tighter crossing estimate
             if ((prevErr <= 0 && err >= 0) || (prevErr >= 0 && err <= 0)) {
               const t = prevErr === err ? 0 : prevErr / (prevErr - err);
@@ -353,7 +770,8 @@
               bestTopX = xCross;
               break;
             }
-            prevX = x; prevErr = err;
+            prevX = x;
+            prevErr = err;
           }
           // Build helix polyline from fork to join for top
           let dTop = `M ${x1} ${y1Top}`;
@@ -363,17 +781,28 @@
           dTop += ` L ${bestTopX} ${yHelixTopAt(bestTopX)}`;
 
           // Find join x for bottom similarly
-          let bestBottomX = x1, bestBottomErr = Infinity, prevXB = x1, prevErrB = yUnwoundBottomAt(x1) - yHelixBottomAt(x1);
-          for (let x = x1 - dx; x >= Math.max(startX, x1 - searchWidth); x -= dx) {
+          let bestBottomX = x1,
+            bestBottomErr = Infinity,
+            prevXB = x1,
+            prevErrB = yUnwoundBottomAt(x1) - yHelixBottomAt(x1);
+          for (
+            let x = x1 - dx;
+            x >= Math.max(startX, x1 - searchWidth);
+            x -= dx
+          ) {
             const err = yUnwoundBottomAt(x) - yHelixBottomAt(x);
-            if (Math.abs(err) < bestBottomErr) { bestBottomErr = Math.abs(err); bestBottomX = x; }
+            if (Math.abs(err) < bestBottomErr) {
+              bestBottomErr = Math.abs(err);
+              bestBottomX = x;
+            }
             if ((prevErrB <= 0 && err >= 0) || (prevErrB >= 0 && err <= 0)) {
               const t = prevErrB === err ? 0 : prevErrB / (prevErrB - err);
               const xCross = prevXB + t * (x - prevXB);
               bestBottomX = xCross;
               break;
             }
-            prevXB = x; prevErrB = err;
+            prevXB = x;
+            prevErrB = err;
           }
           let dBottom = `M ${x1} ${y1Bottom}`;
           for (let x = x1 - dx; x > bestBottomX; x -= dx) {
@@ -381,8 +810,8 @@
           }
           dBottom += ` L ${bestBottomX} ${yHelixBottomAt(bestBottomX)}`;
 
-          junctionTopPath.setAttribute('d', dTop);
-          junctionBottomPath.setAttribute('d', dBottom);
+          junctionTopPath.setAttribute("d", dTop);
+          junctionBottomPath.setAttribute("d", dBottom);
 
           g.appendChild(junctionTopPath);
           g.appendChild(junctionBottomPath);
@@ -406,11 +835,11 @@
         g.appendChild(topLabel);
         g.appendChild(bottomLabel);
         // Hide helicase until helicase button is pressed
-        helicase.style.display = 'none';
+        helicase.style.display = "none";
         g.appendChild(helicase);
-        topo.style.display = 'none';
+        topo.style.display = "none";
         g.appendChild(topo);
-        primase.style.display = 'none';
+        primase.style.display = "none";
         g.appendChild(primase);
 
         render(startX - 1); // ensure entire length is double helix initially
@@ -428,8 +857,8 @@
         let laggingPrimersPlaced = false;
 
         // Pol III state and controls
-        const pol3Btn = document.getElementById('pol3-start');
-        const pol1Btn = document.getElementById('pol1-start');
+        const pol3Btn = document.getElementById("pol3-start");
+        const pol1Btn = document.getElementById("pol1-start");
         let helicaseCompleted = false;
         let pol3Active = false;
         let pol3Completed = false;
@@ -464,33 +893,43 @@
         const pol3BlockGap = 6;
         const pol3Speed = 280; // px per second
         const pol3Epsilon = 6; // gap from helicase
-        const nucleotideColors = ['#10b981', '#ef4444', '#3b82f6', '#a855f7']; // A, T, C, G
+        const nucleotideColors = ["#10b981", "#ef4444", "#3b82f6", "#a855f7"]; // A, T, C, G
         const pol3PathOffset = 10; // push final path further below top template
         const pol3OffsetUnder = 2; // spacing under the template for blocks/enzyme
         // Pol I visual/animation constants
         const pol1Speed = 220; // slightly slower than Pol III
         const pol1LagSpeedFactor = 1.1; // lagging strand runs ~10% faster
-        const pol1Color = '#3b82f6'; // blue enzyme fill
-        const pol1Stroke = '#1d4ed8'; // blue enzyme stroke
+        const pol1Color = "#3b82f6"; // blue enzyme fill
+        const pol1Stroke = "#1d4ed8"; // blue enzyme stroke
         // Visible nick gap between Pol I patches and Pol III products
         const nickGapPx = 8;
 
-        function updatePol3CTA() { /* no-op: keep buttons always visible/clickable */ }
-
-        function hasAnyPrimers() {
-          return !!primersGroup.querySelector('rect.primer-block-leading, rect.primer-block-lagging');
+        function updatePol3CTA() {
+          /* no-op: keep buttons always visible/clickable */
         }
 
-        function updatePol1CTA() { /* no-op: keep buttons always visible/clickable */ }
+        function hasAnyPrimers() {
+          return !!primersGroup.querySelector(
+            "rect.primer-block-leading, rect.primer-block-lagging"
+          );
+        }
 
-        function updateLigaseCTA() { /* no-op: keep buttons always visible/clickable */ }
+        function updatePol1CTA() {
+          /* no-op: keep buttons always visible/clickable */
+        }
+
+        function updateLigaseCTA() {
+          /* no-op: keep buttons always visible/clickable */
+        }
 
         function addLigaseNick(nick) {
           const eps = 1;
           for (const n of ligaseNicks) {
-            if (n.strand === nick.strand &&
-                Math.abs(n.xLeft - nick.xLeft) < eps &&
-                Math.abs(n.xRight - nick.xRight) < eps) {
+            if (
+              n.strand === nick.strand &&
+              Math.abs(n.xLeft - nick.xLeft) < eps &&
+              Math.abs(n.xRight - nick.xRight) < eps
+            ) {
               return;
             }
           }
@@ -499,30 +938,30 @@
 
         /* removed: separate lagging CTA (combined into single Pol III button) */
 
-        const primaseBtn = document.getElementById('primase-start');
+        const primaseBtn = document.getElementById("primase-start");
         let primaseCompleted = false;
 
         // Order notice helpers
-        const orderNotice = document.getElementById('order-notice');
+        const orderNotice = document.getElementById("order-notice");
         let noticeTimer = null;
         function showOrderNotice(msg) {
           if (!orderNotice) return;
           orderNotice.textContent = msg;
-          orderNotice.style.display = '';
+          orderNotice.style.display = "";
           if (noticeTimer) clearTimeout(noticeTimer);
           noticeTimer = setTimeout(() => {
-            if (orderNotice) orderNotice.style.display = 'none';
+            if (orderNotice) orderNotice.style.display = "none";
             noticeTimer = null;
           }, 2000);
         }
 
         // Determine expected next step id based on current completion state
         function getExpectedStepId() {
-          if (!helicaseCompleted) return 'helicase-start';
-          if (!primaseCompleted) return 'primase-start';
-          if (!(pol3Completed && pol3LagCompleted)) return 'pol3-start';
-          if (!pol1Completed) return 'pol1-start';
-          if (!ligaseCompleted) return 'ligase-start';
+          if (!helicaseCompleted) return "helicase-start";
+          if (!primaseCompleted) return "primase-start";
+          if (!(pol3Completed && pol3LagCompleted)) return "pol3-start";
+          if (!pol1Completed) return "pol1-start";
+          if (!ligaseCompleted) return "ligase-start";
           return null;
         }
 
@@ -530,15 +969,29 @@
 
         // Global busy-state helper to prevent overlapping animations
         function isBusy() {
-          return running || primaseActive || pol3Active || pol3LagActive || pol1Active || ligaseActive;
+          return (
+            running ||
+            primaseActive ||
+            pol3Active ||
+            pol3LagActive ||
+            pol1Active ||
+            ligaseActive
+          );
         }
 
         // Lock/unlock all control buttons (including Reset during animations)
         const savedDisabledStates = new Map();
-        const stepButtonIds = ['helicase-start', 'primase-start', 'pol3-start', 'pol1-start', 'ligase-start', 'helicase-reset'];
+        const stepButtonIds = [
+          "helicase-start",
+          "primase-start",
+          "pol3-start",
+          "pol1-start",
+          "ligase-start",
+          "helicase-reset",
+        ];
         function lockStepButtons() {
           savedDisabledStates.clear();
-          stepButtonIds.forEach(id => {
+          stepButtonIds.forEach((id) => {
             const el = document.getElementById(id);
             if (el) {
               savedDisabledStates.set(id, el.disabled);
@@ -547,10 +1000,12 @@
           });
         }
         function unlockStepButtons() {
-          stepButtonIds.forEach(id => {
+          stepButtonIds.forEach((id) => {
             const el = document.getElementById(id);
             if (el) {
-              el.disabled = savedDisabledStates.has(id) ? !!savedDisabledStates.get(id) : false;
+              el.disabled = savedDisabledStates.has(id)
+                ? !!savedDisabledStates.get(id)
+                : false;
             }
           });
           savedDisabledStates.clear();
@@ -565,7 +1020,7 @@
           lockStepButtons();
           const expected = getExpectedStepId();
           if (expected && stepId !== expected) {
-            showOrderNotice('That is not the correct next step.');
+            showOrderNotice("That is not the correct next step.");
             unlockStepButtons();
             return;
           }
@@ -582,23 +1037,39 @@
 
         function friendlyName(stepId) {
           switch (stepId) {
-            case 'helicase-start': return 'Helicase';
-            case 'primase-start': return 'Primase';
-            case 'pol3-start': return 'DNA Pol III';
-            case 'pol1-start': return 'DNA Pol I';
-            case 'ligase-start': return 'Ligase';
-            default: return 'Next step';
+            case "helicase-start":
+              return "Helicase";
+            case "primase-start":
+              return "Primase";
+            case "pol3-start":
+              return "DNA Pol III";
+            case "pol1-start":
+              return "DNA Pol I";
+            case "ligase-start":
+              return "Ligase";
+            default:
+              return "Next step";
           }
         }
 
-        // Shuffle the five step buttons on load; keep Reset last, spans unmoved
+        // Shuffle the five step buttons on load; keep Reset and completion button last, spans unmoved
         (function shuffleButtons() {
-          const controls = document.querySelector('.controls');
+          const controls = document.querySelector(".controls");
           if (!controls) return;
-          const ids = ['helicase-start', 'primase-start', 'pol3-start', 'pol1-start', 'ligase-start'];
-          const buttons = ids.map(id => document.getElementById(id)).filter(Boolean);
+          const ids = [
+            "helicase-start",
+            "primase-start",
+            "pol3-start",
+            "pol1-start",
+            "ligase-start",
+          ];
+          const buttons = ids
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
           if (buttons.length !== ids.length) return;
-          const placeholders = buttons.map(() => document.createComment('btn-slot'));
+          const placeholders = buttons.map(() =>
+            document.createComment("btn-slot")
+          );
           // Insert placeholders before original buttons (capture slots)
           for (let i = 0; i < buttons.length; i++) {
             const btn = buttons[i];
@@ -617,14 +1088,25 @@
             controls.insertBefore(buttons[i], placeholders[i]);
           }
           // Remove placeholders
-          placeholders.forEach(ph => ph.parentNode && ph.parentNode.removeChild(ph));
+          placeholders.forEach(
+            (ph) => ph.parentNode && ph.parentNode.removeChild(ph)
+          );
         })();
 
         // Ensure all five step buttons are visible/enabled on load
         (function enableAllStepButtons() {
-          ['helicase-start', 'primase-start', 'pol3-start', 'pol1-start', 'ligase-start'].forEach(id => {
+          [
+            "helicase-start",
+            "primase-start",
+            "pol3-start",
+            "pol1-start",
+            "ligase-start",
+          ].forEach((id) => {
             const el = document.getElementById(id);
-            if (el) { el.style.display = ''; el.disabled = false; }
+            if (el) {
+              el.style.display = "";
+              el.disabled = false;
+            }
           });
         })();
 
@@ -639,11 +1121,11 @@
 
           let count = 0;
           // Start with a primer whose right edge is just left of the fork
-          let xCenter = xRightEdge - (w / 2) - 2;
+          let xCenter = xRightEdge - w / 2 - 2;
           // Lay primers every okazakiSpacingPx moving leftward
           while (xCenter - w / 2 > startX + marginLeft) {
             const yBottom = centerY + forkOffsetLeft(xCenter, forkX);
-            const yAbove = yBottom - (h / 2) - offsetTowardCenter; // slightly above bottom strand
+            const yAbove = yBottom - h / 2 - offsetTowardCenter; // slightly above bottom strand
             makePrimerRect(xCenter, yAbove, false);
             count++;
             xCenter -= okazakiSpacingPx;
@@ -670,14 +1152,14 @@
             cancelAnimationFrame(animId);
             animId = null;
             // no status text
-            const resetBtn = document.getElementById('helicase-reset');
-            const startBtn = document.getElementById('helicase-start');
+            const resetBtn = document.getElementById("helicase-reset");
+            const startBtn = document.getElementById("helicase-start");
             if (resetBtn && startBtn) {
-              resetBtn.style.display = '';
+              resetBtn.style.display = "";
             }
             // Now reveal and enable Primase
             if (primaseBtn) {
-              primaseBtn.style.display = '';
+              primaseBtn.style.display = "";
               primaseBtn.disabled = false;
             }
             primaseEnabled = true;
@@ -693,21 +1175,21 @@
         }
 
         // Controls
-        const startBtn = document.getElementById('helicase-start');
-        const resetBtn = document.getElementById('helicase-reset');
-        startBtn?.addEventListener('click', () => {
-          attemptStep('helicase-start', () => {
+        const startBtn = document.getElementById("helicase-start");
+        const resetBtn = document.getElementById("helicase-reset");
+        startBtn?.addEventListener("click", () => {
+          attemptStep("helicase-start", () => {
             if (running) return;
             running = true;
             // no status text
             startBtn.disabled = true;
-            resetBtn.style.display = 'none';
+            resetBtn.style.display = "none";
             helicaseX = helicaseStartX;
             lastTs = null;
             // Ensure fork begins at the helicase location
             setHelicasePoints(helicaseX);
-            helicase.style.display = '';
-            topo.style.display = '';
+            helicase.style.display = "";
+            topo.style.display = "";
             setTopoisomerasePosition(helicaseX);
             // Keep fully formed helix at t=0; fork appears as motion begins
             render(helicaseX - 1);
@@ -716,18 +1198,18 @@
         });
 
         // Primase control
-        primaseBtn?.addEventListener('click', () => {
-          attemptStep('primase-start', () => {
+        primaseBtn?.addEventListener("click", () => {
+          attemptStep("primase-start", () => {
             if (leadingPrimerPlaced && laggingPrimersPlaced) return;
             primaseActive = true;
             // Build primer placement positions (leading first, then lagging)
             const xLeftEdge = startX; // leftmost edge of the unwound region
             const yTop = centerY - forkOffsetLeft(xLeftEdge, helicaseX);
             const offsetUnder = 2; // small visual gap below the strand
-            const yUnder = yTop + (primerBlockHeight / 2) + offsetUnder;
+            const yUnder = yTop + primerBlockHeight / 2 + offsetUnder;
             const positions = [{ x: xLeftEdge, y: yUnder, leading: true }];
             // lagging primers from near fork moving leftwards
-            const laggingPositions = (function() {
+            const laggingPositions = (function () {
               const epsilon = 4;
               const marginLeft = 6;
               const w = primerBlockWidth;
@@ -735,10 +1217,10 @@
               const offsetTowardCenter = 2;
               const xRightEdge = helicaseX - epsilon;
               const arr = [];
-              let xCenter = xRightEdge - (w / 2) - 2;
+              let xCenter = xRightEdge - w / 2 - 2;
               while (xCenter - w / 2 > startX + marginLeft) {
                 const yBottom = centerY + forkOffsetLeft(xCenter, helicaseX);
-                const yAbove = yBottom - (h / 2) - offsetTowardCenter;
+                const yAbove = yBottom - h / 2 - offsetTowardCenter;
                 arr.push({ x: xCenter, y: yAbove, leading: false });
                 xCenter -= okazakiSpacingPx;
               }
@@ -747,7 +1229,7 @@
             positions.push(...laggingPositions);
 
             // Show primase enzyme and place primers sequentially with travel animation
-            primase.style.display = '';
+            primase.style.display = "";
             const placePrimerAt = (pos) => {
               if (pos.leading && !leadingPrimerPlaced) {
                 makePrimerRect(pos.x, pos.y, true);
@@ -758,7 +1240,7 @@
             };
             let idx = 0;
             if (positions.length === 0) {
-              primase.style.display = 'none';
+              primase.style.display = "none";
               laggingPrimersPlaced = true;
               primaseCompleted = true;
               primaseActive = false;
@@ -772,7 +1254,7 @@
             idx = 1;
             function moveNext() {
               if (idx >= positions.length) {
-                primase.style.display = 'none';
+                primase.style.display = "none";
                 laggingPrimersPlaced = true;
                 primaseCompleted = true;
                 primaseActive = false;
@@ -785,7 +1267,10 @@
               const cur = getPrimaseXY();
               const dx = target.x - (cur.hasPos ? cur.x : target.x);
               const dy = target.y - (cur.hasPos ? cur.y : target.y);
-              const durationMs = Math.max(200, (Math.hypot(dx, dy) / primaseSpeed) * 1000);
+              const durationMs = Math.max(
+                200,
+                (Math.hypot(dx, dy) / primaseSpeed) * 1000
+              );
               travelPrimaseTo(target.x, target.y, durationMs, () => {
                 placePrimerAt(target);
                 idx++;
@@ -797,13 +1282,20 @@
         });
 
         function getLaggingPrimers() {
-          const rects = Array.from(primersGroup.querySelectorAll('rect.primer-block-lagging'));
-          const arr = rects.map(r => {
-            const x = parseFloat(r.getAttribute('x') || '0');
-            const w = parseFloat(r.getAttribute('width') || '0');
-            const y = parseFloat(r.getAttribute('y') || '0');
-            const h = parseFloat(r.getAttribute('height') || '0');
-            return { xLeft: x, xRight: x + w, xCenter: x + w / 2, yCenter: y + h / 2 };
+          const rects = Array.from(
+            primersGroup.querySelectorAll("rect.primer-block-lagging")
+          );
+          const arr = rects.map((r) => {
+            const x = parseFloat(r.getAttribute("x") || "0");
+            const w = parseFloat(r.getAttribute("width") || "0");
+            const y = parseFloat(r.getAttribute("y") || "0");
+            const h = parseFloat(r.getAttribute("height") || "0");
+            return {
+              xLeft: x,
+              xRight: x + w,
+              xCenter: x + w / 2,
+              yCenter: y + h / 2,
+            };
           });
           // Sort right-to-left: nearest to fork first
           arr.sort((a, b) => b.xCenter - a.xCenter);
@@ -815,11 +1307,11 @@
 
         function ensurePol1Enzyme() {
           if (pol1Enzyme) return pol1Enzyme;
-          const c = document.createElementNS(NS, 'circle');
-          c.setAttribute('r', String(Math.max(8, pol3BlockHeight / 2 + 6)));
-          c.setAttribute('fill', pol1Color);
-          c.setAttribute('stroke', pol1Stroke);
-          c.setAttribute('stroke-width', '2');
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("r", String(Math.max(8, pol3BlockHeight / 2 + 6)));
+          c.setAttribute("fill", pol1Color);
+          c.setAttribute("stroke", pol1Stroke);
+          c.setAttribute("stroke-width", "2");
           pol1Group.appendChild(c);
           pol1Enzyme = c;
           return c;
@@ -827,56 +1319,56 @@
 
         function updatePol1EnzymeTop(x) {
           if (!pol1Enzyme) return;
-          const leadOffsetX = (pol3BlockWidth / 2) + pol3BlockGap + 6;
+          const leadOffsetX = pol3BlockWidth / 2 + pol3BlockGap + 6;
           const xFront = Math.min(x + leadOffsetX, helicaseEndX - pol3Epsilon);
           const yTop = centerY - forkOffsetLeft(xFront, helicaseEndX);
-          const yCenter = yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
-          pol1Enzyme.setAttribute('cx', String(xFront));
-          pol1Enzyme.setAttribute('cy', String(yCenter));
+          const yCenter = yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
+          pol1Enzyme.setAttribute("cx", String(xFront));
+          pol1Enzyme.setAttribute("cy", String(yCenter));
           pol1Group.appendChild(pol1Enzyme);
         }
 
         function updatePol1EnzymeBottom(x) {
           if (!pol1Enzyme) return;
-          const leadOffsetX = (pol3BlockWidth / 2) + pol3BlockGap + 6;
+          const leadOffsetX = pol3BlockWidth / 2 + pol3BlockGap + 6;
           const xFront = Math.max(x - leadOffsetX, startX + 6);
           const yBottom = centerY + forkOffsetLeft(xFront, helicaseEndX);
-          const yCenter = yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
-          pol1Enzyme.setAttribute('cx', String(xFront));
-          pol1Enzyme.setAttribute('cy', String(yCenter));
+          const yCenter = yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
+          pol1Enzyme.setAttribute("cx", String(xFront));
+          pol1Enzyme.setAttribute("cy", String(yCenter));
           pol1Group.appendChild(pol1Enzyme);
         }
 
         function makePol1BlockTop(xCenter, idx) {
-          const rect = document.createElementNS(NS, 'rect');
+          const rect = document.createElementNS(NS, "rect");
           const yTop = centerY - forkOffsetLeft(xCenter, helicaseEndX);
-          const yCenter = yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
-          rect.setAttribute('x', String(xCenter - pol3BlockWidth / 2));
-          rect.setAttribute('y', String(yCenter - pol3BlockHeight / 2));
-          rect.setAttribute('width', String(pol3BlockWidth));
-          rect.setAttribute('height', String(pol3BlockHeight));
-          rect.setAttribute('rx', '3');
-          rect.setAttribute('class', 'pol1-block');
+          const yCenter = yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
+          rect.setAttribute("x", String(xCenter - pol3BlockWidth / 2));
+          rect.setAttribute("y", String(yCenter - pol3BlockHeight / 2));
+          rect.setAttribute("width", String(pol3BlockWidth));
+          rect.setAttribute("height", String(pol3BlockHeight));
+          rect.setAttribute("rx", "3");
+          rect.setAttribute("class", "pol1-block");
           const color = nucleotideColors[idx % nucleotideColors.length];
-          rect.setAttribute('fill', color);
-          rect.setAttribute('style', 'fill: ' + color);
+          rect.setAttribute("fill", color);
+          rect.setAttribute("style", "fill: " + color);
           pol1Group.appendChild(rect);
           return rect;
         }
 
         function makePol1BlockBottom(xCenter, idx) {
-          const rect = document.createElementNS(NS, 'rect');
+          const rect = document.createElementNS(NS, "rect");
           const yBottom = centerY + forkOffsetLeft(xCenter, helicaseEndX);
-          const yCenter = yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
-          rect.setAttribute('x', String(xCenter - pol3BlockWidth / 2));
-          rect.setAttribute('y', String(yCenter - pol3BlockHeight / 2));
-          rect.setAttribute('width', String(pol3BlockWidth));
-          rect.setAttribute('height', String(pol3BlockHeight));
-          rect.setAttribute('rx', '3');
-          rect.setAttribute('class', 'pol1-block');
+          const yCenter = yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
+          rect.setAttribute("x", String(xCenter - pol3BlockWidth / 2));
+          rect.setAttribute("y", String(yCenter - pol3BlockHeight / 2));
+          rect.setAttribute("width", String(pol3BlockWidth));
+          rect.setAttribute("height", String(pol3BlockHeight));
+          rect.setAttribute("rx", "3");
+          rect.setAttribute("class", "pol1-block");
           const color = nucleotideColors[idx % nucleotideColors.length];
-          rect.setAttribute('fill', color);
-          rect.setAttribute('style', 'fill: ' + color);
+          rect.setAttribute("fill", color);
+          rect.setAttribute("style", "fill: " + color);
           pol1Group.appendChild(rect);
           return rect;
         }
@@ -884,9 +1376,12 @@
         function mergePol1PathTop(xLeft, xRight, pol3StartX) {
           // Leave nick only where Pol I meets Pol III (to the right on leading)
           const xs = Math.max(startX, xLeft);
-          const xe = Math.min(helicaseEndX, Math.min(xRight, pol3StartX - nickGapPx));
-          const path = document.createElementNS(NS, 'path');
-          let d = '';
+          const xe = Math.min(
+            helicaseEndX,
+            Math.min(xRight, pol3StartX - nickGapPx)
+          );
+          const path = document.createElementNS(NS, "path");
+          let d = "";
           let started = false;
           if (!(xe > xs)) {
             // Fallback: draw a minimal segment inside the primer bounds
@@ -896,21 +1391,29 @@
               for (let x = xs2; x <= xe2; x += step) {
                 const yTop = centerY - forkOffsetLeft(x, helicaseEndX);
                 const y = yTop + pol3PathOffset;
-                if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-                else { d += ' L ' + x + ' ' + y; }
+                if (!started) {
+                  d += "M " + x + " " + y;
+                  started = true;
+                } else {
+                  d += " L " + x + " " + y;
+                }
               }
-              path.setAttribute('d', d || `M ${xs2} ${centerY}`);
-              path.setAttribute('class', 'pol3-path');
+              path.setAttribute("d", d || `M ${xs2} ${centerY}`);
+              path.setAttribute("class", "pol3-path");
               pol3Group.appendChild(path);
-              const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-              blocks.forEach(b => b.parentNode?.removeChild(b));
+              const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+              blocks.forEach((b) => b.parentNode?.removeChild(b));
               // Record the leading-strand nick at the junction with Pol III
-              addLigaseNick({ strand: 'top', xLeft: Math.max(startX, pol3StartX - nickGapPx), xRight: Math.max(startX, pol3StartX) });
+              addLigaseNick({
+                strand: "top",
+                xLeft: Math.max(startX, pol3StartX - nickGapPx),
+                xRight: Math.max(startX, pol3StartX),
+              });
               updateLigaseCTA();
               return;
             } else {
-              const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-              blocks.forEach(b => b.parentNode?.removeChild(b));
+              const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+              blocks.forEach((b) => b.parentNode?.removeChild(b));
               updateLigaseCTA();
               return;
             }
@@ -918,27 +1421,38 @@
           for (let x = xs; x <= xe; x += step) {
             const yTop = centerY - forkOffsetLeft(x, helicaseEndX);
             const y = yTop + pol3PathOffset;
-            if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-            else { d += ' L ' + x + ' ' + y; }
+            if (!started) {
+              d += "M " + x + " " + y;
+              started = true;
+            } else {
+              d += " L " + x + " " + y;
+            }
           }
-          path.setAttribute('d', d || `M ${xs} ${centerY}`);
-          path.setAttribute('class', 'pol3-path');
+          path.setAttribute("d", d || `M ${xs} ${centerY}`);
+          path.setAttribute("class", "pol3-path");
           pol3Group.appendChild(path);
 
-          const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-          blocks.forEach(b => b.parentNode?.removeChild(b));
+          const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+          blocks.forEach((b) => b.parentNode?.removeChild(b));
           // Record the leading-strand nick at the junction with Pol III
-          addLigaseNick({ strand: 'top', xLeft: Math.max(startX, pol3StartX - nickGapPx), xRight: Math.max(startX, pol3StartX) });
+          addLigaseNick({
+            strand: "top",
+            xLeft: Math.max(startX, pol3StartX - nickGapPx),
+            xRight: Math.max(startX, pol3StartX),
+          });
           updateLigaseCTA();
         }
 
         function mergePol1PathBottom(xRight, xLeft, rightFragEnd, leftFragEnd) {
           // Leave a nick only where this segment meets the right-hand Pol III fragment.
           // The left-hand junction nick will be handled by the next (left) segment.
-          const xl = Math.max(startX, Math.max(xLeft, rightFragEnd + nickGapPx));
+          const xl = Math.max(
+            startX,
+            Math.max(xLeft, rightFragEnd + nickGapPx)
+          );
           const xr = Math.min(helicaseEndX, xRight);
-          const path = document.createElementNS(NS, 'path');
-          let d = '';
+          const path = document.createElementNS(NS, "path");
+          let d = "";
           let started = false;
           const stepSize = Math.max(2, Math.min(6, step));
           if (!(xr > xl)) {
@@ -949,23 +1463,35 @@
               for (let x = xr2; x >= xl2; x -= stepSize) {
                 const yBottom = centerY + forkOffsetLeft(x, helicaseEndX);
                 const y = yBottom - pol3PathOffset;
-                if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-                else { d += ' L ' + x + ' ' + y; }
+                if (!started) {
+                  d += "M " + x + " " + y;
+                  started = true;
+                } else {
+                  d += " L " + x + " " + y;
+                }
               }
-              path.setAttribute('d', d || `M ${xr2} ${centerY}`);
-              path.setAttribute('class', 'pol3-path');
+              path.setAttribute("d", d || `M ${xr2} ${centerY}`);
+              path.setAttribute("class", "pol3-path");
               pol3LagGroup.appendChild(path);
-              const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-              blocks.forEach(b => b.parentNode?.removeChild(b));
+              const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+              blocks.forEach((b) => b.parentNode?.removeChild(b));
               // Record the lagging-strand nick at the junction with the right Pol III fragment
-              addLigaseNick({ strand: 'bottom', xLeft: rightFragEnd, xRight: rightFragEnd + nickGapPx });
+              addLigaseNick({
+                strand: "bottom",
+                xLeft: rightFragEnd,
+                xRight: rightFragEnd + nickGapPx,
+              });
               // Also record the left-hand junction nick (between this Pol I patch and the left Pol III fragment)
-              addLigaseNick({ strand: 'bottom', xLeft: Math.max(startX, leftFragEnd - nickGapPx), xRight: Math.max(startX, leftFragEnd) });
+              addLigaseNick({
+                strand: "bottom",
+                xLeft: Math.max(startX, leftFragEnd - nickGapPx),
+                xRight: Math.max(startX, leftFragEnd),
+              });
               updateLigaseCTA();
               return;
             } else {
-              const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-              blocks.forEach(b => b.parentNode?.removeChild(b));
+              const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+              blocks.forEach((b) => b.parentNode?.removeChild(b));
               updateLigaseCTA();
               return;
             }
@@ -973,41 +1499,56 @@
           for (let x = xr; x >= xl; x -= stepSize) {
             const yBottom = centerY + forkOffsetLeft(x, helicaseEndX);
             const y = yBottom - pol3PathOffset;
-            if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-            else { d += ' L ' + x + ' ' + y; }
+            if (!started) {
+              d += "M " + x + " " + y;
+              started = true;
+            } else {
+              d += " L " + x + " " + y;
+            }
           }
-          path.setAttribute('d', d || `M ${xr} ${centerY}`);
-          path.setAttribute('class', 'pol3-path');
+          path.setAttribute("d", d || `M ${xr} ${centerY}`);
+          path.setAttribute("class", "pol3-path");
           pol3LagGroup.appendChild(path);
 
-          const blocks = pol1Group.querySelectorAll('rect.pol1-block');
-          blocks.forEach(b => b.parentNode?.removeChild(b));
+          const blocks = pol1Group.querySelectorAll("rect.pol1-block");
+          blocks.forEach((b) => b.parentNode?.removeChild(b));
           // Record the lagging-strand nick at the junction with the right Pol III fragment
-          addLigaseNick({ strand: 'bottom', xLeft: rightFragEnd, xRight: rightFragEnd + nickGapPx });
+          addLigaseNick({
+            strand: "bottom",
+            xLeft: rightFragEnd,
+            xRight: rightFragEnd + nickGapPx,
+          });
           // Also record the left-hand junction nick (between this Pol I patch and the left Pol III fragment)
-          addLigaseNick({ strand: 'bottom', xLeft: Math.max(startX, leftFragEnd - nickGapPx), xRight: Math.max(startX, leftFragEnd) });
+          addLigaseNick({
+            strand: "bottom",
+            xLeft: Math.max(startX, leftFragEnd - nickGapPx),
+            xRight: Math.max(startX, leftFragEnd),
+          });
           updateLigaseCTA();
         }
 
         // Travel animation for Pol I enzyme between segment starts
         function getPol1EnzymeXY() {
           if (!pol1Enzyme) return { x: 0, y: 0 };
-          const cx = parseFloat(pol1Enzyme.getAttribute('cx') || '0');
-          const cy = parseFloat(pol1Enzyme.getAttribute('cy') || '0');
+          const cx = parseFloat(pol1Enzyme.getAttribute("cx") || "0");
+          const cy = parseFloat(pol1Enzyme.getAttribute("cy") || "0");
           return { x: cx, y: cy };
         }
 
         function computePol1StartXYForSegment(seg) {
-          const leadOffsetX = (pol3BlockWidth / 2) + pol3BlockGap + 6;
-          if (seg.type === 'top') {
-            const xFront = Math.min(seg.xLeft + leadOffsetX, helicaseEndX - pol3Epsilon);
+          const leadOffsetX = pol3BlockWidth / 2 + pol3BlockGap + 6;
+          if (seg.type === "top") {
+            const xFront = Math.min(
+              seg.xLeft + leadOffsetX,
+              helicaseEndX - pol3Epsilon
+            );
             const yTop = centerY - forkOffsetLeft(xFront, helicaseEndX);
-            const yCenter = yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
+            const yCenter = yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
             return { x: xFront, y: yCenter };
           } else {
             const xFront = Math.max(seg.xRight - leadOffsetX, startX + 6);
             const yBottom = centerY + forkOffsetLeft(xFront, helicaseEndX);
-            const yCenter = yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
+            const yCenter = yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
             return { x: xFront, y: yCenter };
           }
         }
@@ -1022,8 +1563,8 @@
             const t = Math.min(1, (now - t0) / durationMs);
             const x = start.x + (target.x - start.x) * t;
             const y = start.y + (target.y - start.y) * t;
-            pol1Enzyme.setAttribute('cx', String(x));
-            pol1Enzyme.setAttribute('cy', String(y));
+            pol1Enzyme.setAttribute("cx", String(x));
+            pol1Enzyme.setAttribute("cy", String(y));
             pol1Group.appendChild(pol1Enzyme);
             if (t < 1) {
               requestAnimationFrame(step);
@@ -1036,30 +1577,30 @@
         }
 
         function makePol3Block(xCenter, idx) {
-          const rect = document.createElementNS(NS, 'rect');
+          const rect = document.createElementNS(NS, "rect");
           const yTop = centerY - forkOffsetLeft(xCenter, helicaseEndX);
-          const yCenter = yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
-          rect.setAttribute('x', String(xCenter - pol3BlockWidth / 2));
-          rect.setAttribute('y', String(yCenter - pol3BlockHeight / 2));
-          rect.setAttribute('width', String(pol3BlockWidth));
-          rect.setAttribute('height', String(pol3BlockHeight));
-          rect.setAttribute('rx', '3');
-          rect.setAttribute('class', 'pol3-block');
+          const yCenter = yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
+          rect.setAttribute("x", String(xCenter - pol3BlockWidth / 2));
+          rect.setAttribute("y", String(yCenter - pol3BlockHeight / 2));
+          rect.setAttribute("width", String(pol3BlockWidth));
+          rect.setAttribute("height", String(pol3BlockHeight));
+          rect.setAttribute("rx", "3");
+          rect.setAttribute("class", "pol3-block");
           // Color by nucleotide cycling A->T->C->G
           const color = nucleotideColors[idx % nucleotideColors.length];
-          rect.setAttribute('fill', color);
-          rect.setAttribute('style', 'fill: ' + color);
+          rect.setAttribute("fill", color);
+          rect.setAttribute("style", "fill: " + color);
           pol3Group.appendChild(rect);
           return rect;
         }
 
         function ensurePol3Enzyme() {
           if (pol3Enzyme) return pol3Enzyme;
-          const c = document.createElementNS(NS, 'circle');
-          c.setAttribute('r', String(Math.max(8, pol3BlockHeight / 2 + 6)));
-          c.setAttribute('fill', '#8b5cf6'); // purple
-          c.setAttribute('stroke', '#6d28d9');
-          c.setAttribute('stroke-width', '2');
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("r", String(Math.max(8, pol3BlockHeight / 2 + 6)));
+          c.setAttribute("fill", "#8b5cf6"); // purple
+          c.setAttribute("stroke", "#6d28d9");
+          c.setAttribute("stroke-width", "2");
           pol3Group.appendChild(c);
           pol3Enzyme = c;
           return c;
@@ -1067,35 +1608,39 @@
 
         function updatePol3EnzymePosition(x) {
           if (!pol3Enzyme) return;
-          const leadOffsetX = (pol3BlockWidth / 2) + pol3BlockGap + 6; // place in front of newest block
+          const leadOffsetX = pol3BlockWidth / 2 + pol3BlockGap + 6; // place in front of newest block
           const xMax = helicaseEndX - pol3Epsilon;
           const xFront = Math.min(x + leadOffsetX, xMax);
           const yTop = centerY - forkOffsetLeft(xFront, helicaseEndX);
-          const yCenter = yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
-          pol3Enzyme.setAttribute('cx', String(xFront));
-          pol3Enzyme.setAttribute('cy', String(yCenter));
+          const yCenter = yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
+          pol3Enzyme.setAttribute("cx", String(xFront));
+          pol3Enzyme.setAttribute("cy", String(yCenter));
           // Keep enzyme on top of newly added blocks
           pol3Group.appendChild(pol3Enzyme);
         }
 
         function mergePol3BlocksToPath(xStart, xEnd) {
           // Build a smooth path along the top template slightly below it
-          const path = document.createElementNS(NS, 'path');
-          let d = '';
+          const path = document.createElementNS(NS, "path");
+          let d = "";
           let started = false;
           for (let x = xStart; x <= xEnd; x += step) {
             const yTop = centerY - forkOffsetLeft(x, helicaseEndX);
             const y = yTop + pol3PathOffset; // increased offset under the template
-            if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-            else { d += ' L ' + x + ' ' + y; }
+            if (!started) {
+              d += "M " + x + " " + y;
+              started = true;
+            } else {
+              d += " L " + x + " " + y;
+            }
           }
-          path.setAttribute('d', d || `M ${xStart} ${centerY}`);
-          path.setAttribute('class', 'pol3-path');
+          path.setAttribute("d", d || `M ${xStart} ${centerY}`);
+          path.setAttribute("class", "pol3-path");
           pol3Group.appendChild(path);
 
           // Remove all block rects but keep the primer in its own group
-          const blocks = pol3Group.querySelectorAll('rect.pol3-block');
-          blocks.forEach(b => b.parentNode?.removeChild(b));
+          const blocks = pol3Group.querySelectorAll("rect.pol3-block");
+          blocks.forEach((b) => b.parentNode?.removeChild(b));
 
           pol3Active = false;
           pol3Completed = true;
@@ -1106,14 +1651,14 @@
         function startPol3() {
           if (pol3Active || pol3Completed) return;
           // Determine synthesis bounds
-          const xStart = startX + (primerBlockWidth / 2) + pol3BlockGap;
+          const xStart = startX + primerBlockWidth / 2 + pol3BlockGap;
           const xEnd = Math.max(xStart, helicaseEndX - pol3Epsilon);
           pol3FrontX = xStart;
           pol3LastTs = null;
           pol3Active = true;
 
           // Place blocks progressively as front advances
-          let nextBlockCenterX = xStart + (pol3BlockWidth / 2);
+          let nextBlockCenterX = xStart + pol3BlockWidth / 2;
           let nextBlockIndex = 0;
 
           ensurePol3Enzyme();
@@ -1126,7 +1671,10 @@
 
             pol3FrontX = Math.min(xEnd, pol3FrontX + pol3Speed * dt);
 
-            while (nextBlockCenterX - (pol3BlockWidth / 2) <= pol3FrontX && nextBlockCenterX + (pol3BlockWidth / 2) <= xEnd) {
+            while (
+              nextBlockCenterX - pol3BlockWidth / 2 <= pol3FrontX &&
+              nextBlockCenterX + pol3BlockWidth / 2 <= xEnd
+            ) {
               makePol3Block(nextBlockCenterX, nextBlockIndex++);
               nextBlockCenterX += pol3BlockWidth + pol3BlockGap;
               // Ensure enzyme renders above newly appended block
@@ -1139,7 +1687,8 @@
               cancelAnimationFrame(pol3AnimId);
               pol3AnimId = null;
               // Remove enzyme when synthesis completes
-              if (pol3Enzyme && pol3Enzyme.parentNode) pol3Enzyme.parentNode.removeChild(pol3Enzyme);
+              if (pol3Enzyme && pol3Enzyme.parentNode)
+                pol3Enzyme.parentNode.removeChild(pol3Enzyme);
               pol3Enzyme = null;
               mergePol3BlocksToPath(xStart, xEnd);
               return;
@@ -1151,8 +1700,8 @@
           pol3AnimId = requestAnimationFrame(stepPol3);
         }
 
-        pol3Btn?.addEventListener('click', () => {
-          attemptStep('pol3-start', () => {
+        pol3Btn?.addEventListener("click", () => {
+          attemptStep("pol3-start", () => {
             startPol3();
             startPol3Lagging();
           });
@@ -1167,23 +1716,41 @@
 
           // Build segment list: leading then lagging
           const segments = [];
-          const leadRect = primersGroup.querySelector('rect.primer-block-leading');
+          const leadRect = primersGroup.querySelector(
+            "rect.primer-block-leading"
+          );
           if (leadRect) {
-            const x = parseFloat(leadRect.getAttribute('x') || '0');
-            const w = parseFloat(leadRect.getAttribute('width') || '0');
+            const x = parseFloat(leadRect.getAttribute("x") || "0");
+            const w = parseFloat(leadRect.getAttribute("width") || "0");
             const xLeft = x;
             const xRight = x + w;
-            const pol3Start = startX + (primerBlockWidth / 2) + pol3BlockGap;
+            const pol3Start = startX + primerBlockWidth / 2 + pol3BlockGap;
             const xClampRight = Math.max(xLeft, Math.min(xRight, pol3Start));
-            segments.push({ type: 'top', xLeft, xRight: xClampRight, rect: leadRect });
+            segments.push({
+              type: "top",
+              xLeft,
+              xRight: xClampRight,
+              rect: leadRect,
+            });
           }
-          const lagRects = Array.from(primersGroup.querySelectorAll('rect.primer-block-lagging')).map(r => {
-            const x = parseFloat(r.getAttribute('x') || '0');
-            const w = parseFloat(r.getAttribute('width') || '0');
-            const xCenter = x + w / 2;
-            return { rect: r, xLeft: x, xRight: x + w, xCenter };
-          }).sort((a, b) => b.xCenter - a.xCenter);
-          lagRects.forEach(item => segments.push({ type: 'bottom', xLeft: item.xLeft, xRight: item.xRight, rect: item.rect }));
+          const lagRects = Array.from(
+            primersGroup.querySelectorAll("rect.primer-block-lagging")
+          )
+            .map((r) => {
+              const x = parseFloat(r.getAttribute("x") || "0");
+              const w = parseFloat(r.getAttribute("width") || "0");
+              const xCenter = x + w / 2;
+              return { rect: r, xLeft: x, xRight: x + w, xCenter };
+            })
+            .sort((a, b) => b.xCenter - a.xCenter);
+          lagRects.forEach((item) =>
+            segments.push({
+              type: "bottom",
+              xLeft: item.xLeft,
+              xRight: item.xRight,
+              rect: item.rect,
+            })
+          );
 
           let segIndex = 0;
 
@@ -1192,7 +1759,8 @@
               // done
               pol1Active = false;
               pol1Completed = true;
-              if (pol1Enzyme && pol1Enzyme.parentNode) pol1Enzyme.parentNode.removeChild(pol1Enzyme);
+              if (pol1Enzyme && pol1Enzyme.parentNode)
+                pol1Enzyme.parentNode.removeChild(pol1Enzyme);
               pol1Enzyme = null;
               updateLigaseCTA();
               maybeUnlockWhenIdle();
@@ -1200,13 +1768,14 @@
             }
 
             const seg = segments[segIndex];
-            if (seg.type === 'top') {
+            if (seg.type === "top") {
               // Move left -> right
               pol1FrontX = seg.xLeft;
               pol1LastTs = null;
               // Remove primer immediately
-              if (seg.rect && seg.rect.parentNode) seg.rect.parentNode.removeChild(seg.rect);
-              let nextBlockCenterX = seg.xLeft + (pol3BlockWidth / 2);
+              if (seg.rect && seg.rect.parentNode)
+                seg.rect.parentNode.removeChild(seg.rect);
+              let nextBlockCenterX = seg.xLeft + pol3BlockWidth / 2;
               let nextBlockIndex = 0;
               function stepTop(ts) {
                 if (!pol1LastTs) pol1LastTs = ts;
@@ -1215,9 +1784,12 @@
 
                 pol1FrontX = Math.min(seg.xRight, pol1FrontX + pol1Speed * dt);
 
-                while ((nextBlockCenterX + (pol3BlockWidth / 2) <= pol1FrontX) && (nextBlockCenterX + (pol3BlockWidth / 2) <= seg.xRight)) {
+                while (
+                  nextBlockCenterX + pol3BlockWidth / 2 <= pol1FrontX &&
+                  nextBlockCenterX + pol3BlockWidth / 2 <= seg.xRight
+                ) {
                   makePol1BlockTop(nextBlockCenterX, nextBlockIndex++);
-                  nextBlockCenterX += (pol3BlockWidth + pol3BlockGap);
+                  nextBlockCenterX += pol3BlockWidth + pol3BlockGap;
                   if (pol1Enzyme) pol1Group.appendChild(pol1Enzyme);
                 }
 
@@ -1227,12 +1799,13 @@
                   cancelAnimationFrame(pol1AnimId);
                   pol1AnimId = null;
                   // merge and remove primer
-                  const pol3Start = startX + (primerBlockWidth / 2) + pol3BlockGap;
+                  const pol3Start =
+                    startX + primerBlockWidth / 2 + pol3BlockGap;
                   mergePol1PathTop(seg.xLeft, seg.xRight, pol3Start);
                   segIndex++;
                   if (segIndex < segments.length) {
                     const nextSeg = segments[segIndex];
-                    const travelMs = nextSeg.type === 'bottom' ? 1000 : 1200;
+                    const travelMs = nextSeg.type === "bottom" ? 1000 : 1200;
                     travelPol1To(nextSeg, travelMs, () => runNextSegment());
                   } else {
                     runNextSegment();
@@ -1248,22 +1821,26 @@
               pol1FrontX = seg.xRight;
               pol1LastTs = null;
               // Remove primer immediately
-              if (seg.rect && seg.rect.parentNode) seg.rect.parentNode.removeChild(seg.rect);
-              let nextBlockCenterX = seg.xRight - (pol3BlockWidth / 2);
+              if (seg.rect && seg.rect.parentNode)
+                seg.rect.parentNode.removeChild(seg.rect);
+              let nextBlockCenterX = seg.xRight - pol3BlockWidth / 2;
               let nextBlockIndex = 0;
               function stepBottom(ts) {
                 if (!pol1LastTs) pol1LastTs = ts;
                 const dt = (ts - pol1LastTs) / 1000;
                 pol1LastTs = ts;
 
-                pol1FrontX = Math.max(seg.xLeft, pol1FrontX - (pol1Speed * pol1LagSpeedFactor) * dt);
+                pol1FrontX = Math.max(
+                  seg.xLeft,
+                  pol1FrontX - pol1Speed * pol1LagSpeedFactor * dt
+                );
 
                 while (
-                  (nextBlockCenterX - (pol3BlockWidth / 2) >= seg.xLeft) &&
-                  (nextBlockCenterX + (pol3BlockWidth / 2) >= pol1FrontX)
+                  nextBlockCenterX - pol3BlockWidth / 2 >= seg.xLeft &&
+                  nextBlockCenterX + pol3BlockWidth / 2 >= pol1FrontX
                 ) {
                   makePol1BlockBottom(nextBlockCenterX, nextBlockIndex++);
-                  nextBlockCenterX -= (pol3BlockWidth + pol3BlockGap);
+                  nextBlockCenterX -= pol3BlockWidth + pol3BlockGap;
                   if (pol1Enzyme) pol1Group.appendChild(pol1Enzyme);
                 }
 
@@ -1276,14 +1853,20 @@
                   const rightFragEnd = seg.xLeft - pol3BlockGap;
                   const leftClamp = startX + 10;
                   const nextSeg = segments[segIndex + 1];
-                  const leftFragEnd = (nextSeg && nextSeg.type === 'bottom')
-                    ? nextSeg.xRight + pol3BlockGap
-                    : leftClamp;
-                  mergePol1PathBottom(seg.xRight, seg.xLeft, rightFragEnd, leftFragEnd);
+                  const leftFragEnd =
+                    nextSeg && nextSeg.type === "bottom"
+                      ? nextSeg.xRight + pol3BlockGap
+                      : leftClamp;
+                  mergePol1PathBottom(
+                    seg.xRight,
+                    seg.xLeft,
+                    rightFragEnd,
+                    leftFragEnd
+                  );
                   segIndex++;
                   if (segIndex < segments.length) {
                     const nextSeg = segments[segIndex];
-                    const travelMs = nextSeg.type === 'bottom' ? 1000 : 1200;
+                    const travelMs = nextSeg.type === "bottom" ? 1000 : 1200;
                     travelPol1To(nextSeg, travelMs, () => runNextSegment());
                   } else {
                     runNextSegment();
@@ -1300,18 +1883,245 @@
           runNextSegment();
         }
 
-        pol1Btn?.addEventListener('click', () => {
-          attemptStep('pol1-start', () => {
+        pol1Btn?.addEventListener("click", () => {
+          attemptStep("pol1-start", () => {
             startPol1();
           });
         });
 
+        // ===== Completion and Separated Strands Visualization =====
+        let replicationCompleted = false;
+
+        function showCompletionButton() {
+          // Check if all enzymes are completed
+          if (
+            helicaseCompleted &&
+            primaseCompleted &&
+            pol3Completed &&
+            pol3LagCompleted &&
+            pol1Completed &&
+            ligaseCompleted
+          ) {
+            const completeBtn = document.getElementById("complete-replication");
+            if (completeBtn && !replicationCompleted) {
+              completeBtn.style.display = "";
+            }
+          }
+        }
+
+        function createSeparatedStrands() {
+          if (replicationCompleted) return;
+          replicationCompleted = true;
+
+          // Hide the replication fork visualization
+          g.style.display = "none";
+
+          // Create a new SVG group for separated strands
+          const separatedGroup = document.createElementNS(NS, "g");
+          separatedGroup.setAttribute("id", "separated-strands");
+          svg.appendChild(separatedGroup);
+
+          // Create two complete double helixes side by side
+          const strand1CenterY = 200;
+          const strand2CenterY = 400;
+          const strandWidth = 400;
+          const strand1StartX = 200;
+          const strand2StartX = 700;
+
+          // Create first daughter strand (top)
+          const strand1BackboneA = document.createElementNS(NS, "path");
+          const strand1BackboneB = document.createElementNS(NS, "path");
+          const strand1Basepairs = document.createElementNS(NS, "g");
+          strand1Basepairs.setAttribute("class", "basepairs");
+
+          let d1BackA = "";
+          let d1BackB = "";
+          let started1A = false;
+          let started1B = false;
+
+          for (
+            let x = strand1StartX;
+            x <= strand1StartX + strandWidth;
+            x += step
+          ) {
+            const phase = (2 * Math.PI * (x - strand1StartX)) / wavelength;
+            const yA = strand1CenterY + amplitude * Math.sin(phase);
+            const yB = strand1CenterY + amplitude * Math.sin(phase + Math.PI);
+            if (!started1A) {
+              d1BackA += "M " + x + " " + yA;
+              started1A = true;
+            } else {
+              d1BackA += " L " + x + " " + yA;
+            }
+            if (!started1B) {
+              d1BackB += "M " + x + " " + yB;
+              started1B = true;
+            } else {
+              d1BackB += " L " + x + " " + yB;
+            }
+
+            // Add base pairs
+            const phase2 = (2 * Math.PI * (x - strand1StartX)) / wavelength;
+            const yA2 = strand1CenterY + amplitude * Math.sin(phase2);
+            const yB2 = strand1CenterY + amplitude * Math.sin(phase2 + Math.PI);
+            const tilt = 6 * Math.cos(phase2);
+            const ln = document.createElementNS(NS, "line");
+            const y1Constrained = Math.max(
+              strand1CenterY - amplitude - 2,
+              Math.min(strand1CenterY + amplitude + 2, yA2 - tilt)
+            );
+            const y2Constrained = Math.max(
+              strand1CenterY - amplitude - 2,
+              Math.min(strand1CenterY + amplitude + 2, yB2 + tilt)
+            );
+            ln.setAttribute("x1", x);
+            ln.setAttribute("y1", y1Constrained);
+            ln.setAttribute("x2", x);
+            ln.setAttribute("y2", y2Constrained);
+            ln.setAttribute("class", "basepair-line");
+            strand1Basepairs.appendChild(ln);
+          }
+
+          strand1BackboneA.setAttribute("d", d1BackA);
+          strand1BackboneA.setAttribute("class", "backbone backbone-a");
+          strand1BackboneB.setAttribute("d", d1BackB);
+          strand1BackboneB.setAttribute("class", "backbone backbone-b");
+
+          // Create second daughter strand (bottom)
+          const strand2BackboneA = document.createElementNS(NS, "path");
+          const strand2BackboneB = document.createElementNS(NS, "path");
+          const strand2Basepairs = document.createElementNS(NS, "g");
+          strand2Basepairs.setAttribute("class", "basepairs");
+
+          let d2BackA = "";
+          let d2BackB = "";
+          let started2A = false;
+          let started2B = false;
+
+          for (
+            let x = strand2StartX;
+            x <= strand2StartX + strandWidth;
+            x += step
+          ) {
+            const phase = (2 * Math.PI * (x - strand2StartX)) / wavelength;
+            const yA = strand2CenterY + amplitude * Math.sin(phase);
+            const yB = strand2CenterY + amplitude * Math.sin(phase + Math.PI);
+            if (!started2A) {
+              d2BackA += "M " + x + " " + yA;
+              started2A = true;
+            } else {
+              d2BackA += " L " + x + " " + yA;
+            }
+            if (!started2B) {
+              d2BackB += "M " + x + " " + yB;
+              started2B = true;
+            } else {
+              d2BackB += " L " + x + " " + yB;
+            }
+
+            // Add base pairs
+            const phase2 = (2 * Math.PI * (x - strand2StartX)) / wavelength;
+            const yA2 = strand2CenterY + amplitude * Math.sin(phase2);
+            const yB2 = strand2CenterY + amplitude * Math.sin(phase2 + Math.PI);
+            const tilt = 6 * Math.cos(phase2);
+            const ln = document.createElementNS(NS, "line");
+            const y1Constrained = Math.max(
+              strand2CenterY - amplitude - 2,
+              Math.min(strand2CenterY + amplitude + 2, yA2 - tilt)
+            );
+            const y2Constrained = Math.max(
+              strand2CenterY - amplitude - 2,
+              Math.min(strand2CenterY + amplitude + 2, yB2 + tilt)
+            );
+            ln.setAttribute("x1", x);
+            ln.setAttribute("y1", y1Constrained);
+            ln.setAttribute("x2", x);
+            ln.setAttribute("y2", y2Constrained);
+            ln.setAttribute("class", "basepair-line");
+            strand2Basepairs.appendChild(ln);
+          }
+
+          strand2BackboneA.setAttribute("d", d2BackA);
+          strand2BackboneA.setAttribute("class", "backbone backbone-a");
+          strand2BackboneB.setAttribute("d", d2BackB);
+          strand2BackboneB.setAttribute("class", "backbone backbone-b");
+
+          // Add labels
+          const label1Top = document.createElementNS(NS, "text");
+          label1Top.setAttribute("class", "label prime");
+          label1Top.setAttribute("x", String(strand1StartX - 22));
+          label1Top.setAttribute("y", String(strand1CenterY - amplitude - 6));
+          label1Top.textContent = "3'";
+
+          const label1Bottom = document.createElementNS(NS, "text");
+          label1Bottom.setAttribute("class", "label prime");
+          label1Bottom.setAttribute("x", String(strand1StartX - 22));
+          label1Bottom.setAttribute(
+            "y",
+            String(strand1CenterY + amplitude + 14)
+          );
+          label1Bottom.textContent = "5'";
+
+          const label2Top = document.createElementNS(NS, "text");
+          label2Top.setAttribute("class", "label prime");
+          label2Top.setAttribute("x", String(strand2StartX - 22));
+          label2Top.setAttribute("y", String(strand2CenterY - amplitude - 6));
+          label2Top.textContent = "3'";
+
+          const label2Bottom = document.createElementNS(NS, "text");
+          label2Bottom.setAttribute("class", "label prime");
+          label2Bottom.setAttribute("x", String(strand2StartX - 22));
+          label2Bottom.setAttribute(
+            "y",
+            String(strand2CenterY + amplitude + 14)
+          );
+          label2Bottom.textContent = "5'";
+
+          // Append all elements to separated group
+          separatedGroup.appendChild(strand1Basepairs);
+          separatedGroup.appendChild(strand1BackboneA);
+          separatedGroup.appendChild(strand1BackboneB);
+          separatedGroup.appendChild(label1Top);
+          separatedGroup.appendChild(label1Bottom);
+
+          separatedGroup.appendChild(strand2Basepairs);
+          separatedGroup.appendChild(strand2BackboneA);
+          separatedGroup.appendChild(strand2BackboneB);
+          separatedGroup.appendChild(label2Top);
+          separatedGroup.appendChild(label2Bottom);
+
+          // Add title labels
+          const title1 = document.createElementNS(NS, "text");
+          title1.setAttribute("class", "label prime");
+          title1.setAttribute("x", String(strand1StartX + strandWidth / 2));
+          title1.setAttribute("y", String(strand1CenterY - amplitude - 30));
+          title1.setAttribute("font-size", "16");
+          title1.setAttribute("font-weight", "600");
+          title1.textContent = "Daughter Strand 1";
+          separatedGroup.appendChild(title1);
+
+          const title2 = document.createElementNS(NS, "text");
+          title2.setAttribute("class", "label prime");
+          title2.setAttribute("x", String(strand2StartX + strandWidth / 2));
+          title2.setAttribute("y", String(strand2CenterY - amplitude - 30));
+          title2.setAttribute("font-size", "16");
+          title2.setAttribute("font-weight", "600");
+          title2.textContent = "Daughter Strand 2";
+          separatedGroup.appendChild(title2);
+
+          // Hide completion button
+          const completeBtn = document.getElementById("complete-replication");
+          if (completeBtn) {
+            completeBtn.style.display = "none";
+          }
+        }
+
         // ===== DNA Ligase (Seals nicks) =====
         function ensureLigaseEnzyme() {
           if (ligaseEnzyme) return ligaseEnzyme;
-          const c = document.createElementNS(NS, 'circle');
-          c.setAttribute('r', String(Math.max(8, pol3BlockHeight / 2 + 6)));
-          c.setAttribute('class', 'ligase-enzyme');
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("r", String(Math.max(8, pol3BlockHeight / 2 + 6)));
+          c.setAttribute("class", "ligase-enzyme");
           ligaseGroup.appendChild(c);
           ligaseEnzyme = c;
           return c;
@@ -1319,8 +2129,8 @@
 
         function getLigaseXY() {
           if (!ligaseEnzyme) return { x: NaN, y: NaN };
-          const cx = parseFloat(ligaseEnzyme.getAttribute('cx') || 'NaN');
-          const cy = parseFloat(ligaseEnzyme.getAttribute('cy') || 'NaN');
+          const cx = parseFloat(ligaseEnzyme.getAttribute("cx") || "NaN");
+          const cy = parseFloat(ligaseEnzyme.getAttribute("cy") || "NaN");
           return { x: cx, y: cy };
         }
 
@@ -1334,8 +2144,8 @@
             const t = Math.min(1, (now - t0) / durationMs);
             const x = xStart + (xTarget - xStart) * t;
             const y = yStart + (yTarget - yStart) * t;
-            ligaseEnzyme.setAttribute('cx', String(x));
-            ligaseEnzyme.setAttribute('cy', String(y));
+            ligaseEnzyme.setAttribute("cx", String(x));
+            ligaseEnzyme.setAttribute("cy", String(y));
             ligaseGroup.appendChild(ligaseEnzyme);
             if (t < 1) requestAnimationFrame(step);
             else if (onDone) onDone();
@@ -1345,17 +2155,17 @@
 
         function sealNick(n, onDone) {
           const overlapPx = 1;
-          const path = document.createElementNS(NS, 'path');
-          let d = '';
+          const path = document.createElementNS(NS, "path");
+          let d = "";
           const stepSize = Math.max(2, Math.min(6, step));
-          if (n.strand === 'top') {
+          if (n.strand === "top") {
             const xs = Math.max(startX, n.xLeft - overlapPx);
             const xe = Math.min(helicaseEndX, n.xRight + overlapPx);
             for (let x = xs; x <= xe; x += stepSize) {
               const yTop = centerY - forkOffsetLeft(x, helicaseEndX);
               const y = yTop + pol3PathOffset;
-              if (!d) d = 'M ' + x + ' ' + y;
-              else d += ' L ' + x + ' ' + y;
+              if (!d) d = "M " + x + " " + y;
+              else d += " L " + x + " " + y;
             }
           } else {
             const xs = Math.max(startX, n.xLeft - overlapPx);
@@ -1363,12 +2173,12 @@
             for (let x = xe; x >= xs; x -= stepSize) {
               const yBottom = centerY + forkOffsetLeft(x, helicaseEndX);
               const y = yBottom - pol3PathOffset;
-              if (!d) d = 'M ' + x + ' ' + y;
-              else d += ' L ' + x + ' ' + y;
+              if (!d) d = "M " + x + " " + y;
+              else d += " L " + x + " " + y;
             }
           }
-          path.setAttribute('d', d || `M ${n.xLeft} ${centerY}`);
-          path.setAttribute('class', 'ligase-weld');
+          path.setAttribute("d", d || `M ${n.xLeft} ${centerY}`);
+          path.setAttribute("class", "ligase-weld");
           ligaseGroup.appendChild(path);
           if (onDone) onDone();
         }
@@ -1379,8 +2189,10 @@
           ligaseActive = true;
           ensureLigaseEnzyme();
           // Order: top first (if any), then bottom from right to left
-          const topNicks = ligaseNicks.filter(n => n.strand === 'top');
-          const bottomNicks = ligaseNicks.filter(n => n.strand === 'bottom').sort((a, b) => b.xRight - a.xRight);
+          const topNicks = ligaseNicks.filter((n) => n.strand === "top");
+          const bottomNicks = ligaseNicks
+            .filter((n) => n.strand === "bottom")
+            .sort((a, b) => b.xRight - a.xRight);
           const seq = [...topNicks, ...bottomNicks];
           let i = 0;
           function next() {
@@ -1388,21 +2200,24 @@
               ligaseActive = false;
               ligaseCompleted = true;
               // Remove enzyme after completion
-              if (ligaseEnzyme && ligaseEnzyme.parentNode) ligaseEnzyme.parentNode.removeChild(ligaseEnzyme);
+              if (ligaseEnzyme && ligaseEnzyme.parentNode)
+                ligaseEnzyme.parentNode.removeChild(ligaseEnzyme);
               ligaseEnzyme = null;
-              const ligBtn = document.getElementById('ligase-start');
+              const ligBtn = document.getElementById("ligase-start");
               maybeUnlockWhenIdle();
+              // Show completion button after all enzymes finish
+              showCompletionButton();
               return;
             }
             const n = seq[i++];
-            const xTarget = n.strand === 'top' ? n.xLeft : n.xRight;
-            const yTarget = (function() {
-              if (n.strand === 'top') {
+            const xTarget = n.strand === "top" ? n.xLeft : n.xRight;
+            const yTarget = (function () {
+              if (n.strand === "top") {
                 const yTop = centerY - forkOffsetLeft(xTarget, helicaseEndX);
-                return yTop + (pol3BlockHeight / 2) + pol3OffsetUnder;
+                return yTop + pol3BlockHeight / 2 + pol3OffsetUnder;
               } else {
                 const yBottom = centerY + forkOffsetLeft(xTarget, helicaseEndX);
-                return yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
+                return yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
               }
             })();
             const cur = getLigaseXY();
@@ -1416,21 +2231,27 @@
           next();
         }
 
-        const ligaseBtn = document.getElementById('ligase-start');
-        ligaseBtn?.addEventListener('click', () => {
-          attemptStep('ligase-start', () => {
+        const ligaseBtn = document.getElementById("ligase-start");
+        ligaseBtn?.addEventListener("click", () => {
+          attemptStep("ligase-start", () => {
             startLigase();
           });
         });
 
+        // Completion button
+        const completeBtn = document.getElementById("complete-replication");
+        completeBtn?.addEventListener("click", () => {
+          createSeparatedStrands();
+        });
+
         function ensurePol3LagEnzyme() {
           if (pol3LagEnzyme) return pol3LagEnzyme;
-          const c = document.createElementNS(NS, 'circle');
-          c.setAttribute('r', String(Math.max(8, pol3BlockHeight / 2 + 6)));
-          c.setAttribute('class', 'pol3-lag-enzyme');
-          c.setAttribute('fill', '#8b5cf6');
-          c.setAttribute('stroke', '#6d28d9');
-          c.setAttribute('stroke-width', '2');
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("r", String(Math.max(8, pol3BlockHeight / 2 + 6)));
+          c.setAttribute("class", "pol3-lag-enzyme");
+          c.setAttribute("fill", "#8b5cf6");
+          c.setAttribute("stroke", "#6d28d9");
+          c.setAttribute("stroke-width", "2");
           pol3LagGroup.appendChild(c);
           pol3LagEnzyme = c;
           return c;
@@ -1438,51 +2259,55 @@
 
         function updatePol3LagEnzymePosition(x) {
           if (!pol3LagEnzyme) return;
-          const leadOffsetX = (pol3BlockWidth / 2) + pol3BlockGap + 6;
+          const leadOffsetX = pol3BlockWidth / 2 + pol3BlockGap + 6;
           const xMin = startX + 6;
           const xFront = Math.max(x - leadOffsetX, xMin);
           const yBottom = centerY + forkOffsetLeft(xFront, helicaseEndX);
-          const yCenter = yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
-          pol3LagEnzyme.setAttribute('cx', String(xFront));
-          pol3LagEnzyme.setAttribute('cy', String(yCenter));
+          const yCenter = yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
+          pol3LagEnzyme.setAttribute("cx", String(xFront));
+          pol3LagEnzyme.setAttribute("cy", String(yCenter));
           pol3LagGroup.appendChild(pol3LagEnzyme);
         }
 
         function makeLagBlock(xCenter, idx) {
-          const rect = document.createElementNS(NS, 'rect');
+          const rect = document.createElementNS(NS, "rect");
           const yBottom = centerY + forkOffsetLeft(xCenter, helicaseEndX);
-          const yCenter = yBottom - (pol3BlockHeight / 2) - pol3OffsetUnder;
-          rect.setAttribute('x', String(xCenter - pol3BlockWidth / 2));
-          rect.setAttribute('y', String(yCenter - pol3BlockHeight / 2));
-          rect.setAttribute('width', String(pol3BlockWidth));
-          rect.setAttribute('height', String(pol3BlockHeight));
-          rect.setAttribute('rx', '3');
-          rect.setAttribute('class', 'pol3-lag-block');
+          const yCenter = yBottom - pol3BlockHeight / 2 - pol3OffsetUnder;
+          rect.setAttribute("x", String(xCenter - pol3BlockWidth / 2));
+          rect.setAttribute("y", String(yCenter - pol3BlockHeight / 2));
+          rect.setAttribute("width", String(pol3BlockWidth));
+          rect.setAttribute("height", String(pol3BlockHeight));
+          rect.setAttribute("rx", "3");
+          rect.setAttribute("class", "pol3-lag-block");
           const color = nucleotideColors[idx % nucleotideColors.length];
-          rect.setAttribute('fill', color);
-          rect.setAttribute('style', 'fill: ' + color);
+          rect.setAttribute("fill", color);
+          rect.setAttribute("style", "fill: " + color);
           pol3LagGroup.appendChild(rect);
           return rect;
         }
 
         function mergeLagBlocksToPath(xRight, xLeft) {
-          const path = document.createElementNS(NS, 'path');
-          let d = '';
+          const path = document.createElementNS(NS, "path");
+          let d = "";
           let started = false;
           const stepSize = Math.max(2, Math.min(6, step));
           for (let x = xRight; x >= xLeft; x -= stepSize) {
             const yBottom = centerY + forkOffsetLeft(x, helicaseEndX);
             const y = yBottom - pol3PathOffset;
-            if (!started) { d += 'M ' + x + ' ' + y; started = true; }
-            else { d += ' L ' + x + ' ' + y; }
+            if (!started) {
+              d += "M " + x + " " + y;
+              started = true;
+            } else {
+              d += " L " + x + " " + y;
+            }
           }
-          path.setAttribute('d', d || `M ${xRight} ${centerY}`);
-          path.setAttribute('class', 'pol3-path');
+          path.setAttribute("d", d || `M ${xRight} ${centerY}`);
+          path.setAttribute("class", "pol3-path");
           pol3LagGroup.appendChild(path);
 
           // Remove all lagging block rects for this fragment (group currently contains only those)
-          const blocks = pol3LagGroup.querySelectorAll('rect.pol3-lag-block');
-          blocks.forEach(b => b.parentNode?.removeChild(b));
+          const blocks = pol3LagGroup.querySelectorAll("rect.pol3-lag-block");
+          blocks.forEach((b) => b.parentNode?.removeChild(b));
         }
 
         function startPol3Lagging() {
@@ -1501,7 +2326,8 @@
               // done
               pol3LagActive = false;
               pol3LagCompleted = true;
-              if (pol3LagEnzyme && pol3LagEnzyme.parentNode) pol3LagEnzyme.parentNode.removeChild(pol3LagEnzyme);
+              if (pol3LagEnzyme && pol3LagEnzyme.parentNode)
+                pol3LagEnzyme.parentNode.removeChild(pol3LagEnzyme);
               pol3LagEnzyme = null;
               updatePol1CTA();
               maybeUnlockWhenIdle();
@@ -1512,14 +2338,16 @@
             const next = primers[fragmentIndex + 1];
             const gap = pol3BlockGap;
             const xRightBound = Math.max(leftClamp + gap, curr.xLeft - gap);
-            const xLeftBound = next ? Math.max(leftClamp, next.xRight + gap) : leftClamp;
+            const xLeftBound = next
+              ? Math.max(leftClamp, next.xRight + gap)
+              : leftClamp;
 
             /* no status readout */
 
             pol3LagFrontX = xRightBound;
             pol3LagLastTs = null;
 
-            let nextBlockCenterX = xRightBound - (pol3BlockWidth / 2);
+            let nextBlockCenterX = xRightBound - pol3BlockWidth / 2;
             let nextBlockIndex = 0;
 
             updatePol3LagEnzymePosition(pol3LagFrontX);
@@ -1529,14 +2357,17 @@
               const dt = (ts - pol3LagLastTs) / 1000;
               pol3LagLastTs = ts;
 
-              pol3LagFrontX = Math.max(xLeftBound, pol3LagFrontX - pol3Speed * dt);
+              pol3LagFrontX = Math.max(
+                xLeftBound,
+                pol3LagFrontX - pol3Speed * dt
+              );
 
               while (
-                (nextBlockCenterX - (pol3BlockWidth / 2) >= xLeftBound) &&
-                (nextBlockCenterX + (pol3BlockWidth / 2) >= pol3LagFrontX)
+                nextBlockCenterX - pol3BlockWidth / 2 >= xLeftBound &&
+                nextBlockCenterX + pol3BlockWidth / 2 >= pol3LagFrontX
               ) {
                 makeLagBlock(nextBlockCenterX, nextBlockIndex++);
-                nextBlockCenterX -= (pol3BlockWidth + pol3BlockGap);
+                nextBlockCenterX -= pol3BlockWidth + pol3BlockGap;
                 if (pol3LagEnzyme) pol3LagGroup.appendChild(pol3LagEnzyme);
               }
 
@@ -1563,37 +2394,59 @@
 
         /* removed: separate lagging start button listener (combined into single Pol III button) */
 
-        resetBtn?.addEventListener('click', () => {
+        resetBtn?.addEventListener("click", () => {
           if (animId) cancelAnimationFrame(animId);
           animId = null;
           running = false;
           // no status text
+
+          // Reset completion state
+          replicationCompleted = false;
+          const separatedGroup = document.getElementById("separated-strands");
+          if (separatedGroup && separatedGroup.parentNode) {
+            separatedGroup.parentNode.removeChild(separatedGroup);
+          }
+          g.style.display = "";
+
+          // Hide completion button
+          const completeBtn = document.getElementById("complete-replication");
+          if (completeBtn) {
+            completeBtn.style.display = "none";
+          }
+
           // Restore full double helix
           render(startX - 1);
           setHelicasePoints(helicaseStartX);
-          helicase.style.display = 'none';
-          topo.style.display = 'none';
+          helicase.style.display = "none";
+          topo.style.display = "none";
           // Remove completion junctions if present
           if (junctionsAdded) {
-            if (junctionTopPath.parentNode) junctionTopPath.parentNode.removeChild(junctionTopPath);
-            if (junctionBottomPath.parentNode) junctionBottomPath.parentNode.removeChild(junctionBottomPath);
+            if (junctionTopPath.parentNode)
+              junctionTopPath.parentNode.removeChild(junctionTopPath);
+            if (junctionBottomPath.parentNode)
+              junctionBottomPath.parentNode.removeChild(junctionBottomPath);
             junctionsAdded = false;
           }
           startBtn.disabled = false;
-          resetBtn.style.display = 'none';
+          resetBtn.style.display = "none";
 
           // Clear primers and primase state
-          while (primersGroup.firstChild) primersGroup.removeChild(primersGroup.firstChild);
+          while (primersGroup.firstChild)
+            primersGroup.removeChild(primersGroup.firstChild);
           primaseActive = false;
           primaseEnabled = false;
           leadingPrimerPlaced = false;
           laggingPrimersPlaced = false;
           primaseCompleted = false;
-          primase.style.display = 'none';
-          if (primaseBtn) { primaseBtn.disabled = false; primaseBtn.style.display = ''; }
+          primase.style.display = "none";
+          if (primaseBtn) {
+            primaseBtn.disabled = false;
+            primaseBtn.style.display = "";
+          }
 
           // Clear Pol III visuals and state
-          while (pol3Group.firstChild) pol3Group.removeChild(pol3Group.firstChild);
+          while (pol3Group.firstChild)
+            pol3Group.removeChild(pol3Group.firstChild);
           helicaseCompleted = false;
           pol3Active = false;
           pol3Completed = false;
@@ -1601,10 +2454,14 @@
           pol3AnimId = null;
           pol3LastTs = null;
           pol3Enzyme = null;
-          if (pol3Btn) { pol3Btn.disabled = false; pol3Btn.style.display = ''; }
+          if (pol3Btn) {
+            pol3Btn.disabled = false;
+            pol3Btn.style.display = "";
+          }
 
           // Clear Lagging Pol III visuals and state
-          while (pol3LagGroup.firstChild) pol3LagGroup.removeChild(pol3LagGroup.firstChild);
+          while (pol3LagGroup.firstChild)
+            pol3LagGroup.removeChild(pol3LagGroup.firstChild);
           pol3LagActive = false;
           pol3LagCompleted = false;
           if (pol3LagAnimId) cancelAnimationFrame(pol3LagAnimId);
@@ -1614,30 +2471,36 @@
           /* removed: separate lagging button/status reset */
 
           // Clear Pol I visuals and state
-          while (pol1Group.firstChild) pol1Group.removeChild(pol1Group.firstChild);
+          while (pol1Group.firstChild)
+            pol1Group.removeChild(pol1Group.firstChild);
           pol1Active = false;
           pol1Completed = false;
           if (pol1AnimId) cancelAnimationFrame(pol1AnimId);
           pol1AnimId = null;
           pol1LastTs = null;
           pol1Enzyme = null;
-          if (pol1Btn) { pol1Btn.disabled = false; pol1Btn.style.display = ''; }
+          if (pol1Btn) {
+            pol1Btn.disabled = false;
+            pol1Btn.style.display = "";
+          }
           // Clear Ligase visuals and state
-          while (ligaseGroup.firstChild) ligaseGroup.removeChild(ligaseGroup.firstChild);
+          while (ligaseGroup.firstChild)
+            ligaseGroup.removeChild(ligaseGroup.firstChild);
           ligaseActive = false;
           ligaseCompleted = false;
           ligaseNicks = [];
           ligaseEnzyme = null;
-          const ligBtn = document.getElementById('ligase-start');
-          if (ligBtn) { ligBtn.disabled = false; ligBtn.style.display = ''; }
+          const ligBtn = document.getElementById("ligase-start");
+          if (ligBtn) {
+            ligBtn.disabled = false;
+            ligBtn.style.display = "";
+          }
           // Clear order notice
-          if (orderNotice) orderNotice.style.display = 'none';
+          if (orderNotice) orderNotice.style.display = "none";
           // Ensure step buttons are unlocked after a reset
           unlockStepButtons();
         });
       })();
     </script>
   </body>
-  </html>
-
-
+</html>
